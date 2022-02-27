@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class HandScript : MonoBehaviour
 {
 
@@ -29,11 +30,6 @@ public class HandScript : MonoBehaviour
     }
 
     void Update() {
-        for(int i = 0; i < 20; i++) {
-            if(Input.GetKeyDown("joystick 1 button "+i)){
-                Debug.Log(i);
-            }
-        }
         // Teleporting
         if ((Input.GetAxisRaw("L_Horizontal") != 0 || Input.GetAxisRaw("L_Vertical") != 0) && isLeft) {
             GravCast(transform.position, (pointEnd.position-pointStart.position).normalized, 15, 0.5f);
@@ -63,12 +59,16 @@ public class HandScript : MonoBehaviour
                 holding = nearest;
             }
         }
+
+        // Release Grab
         if(Input.GetKeyUp(controls[0])){ 
             if (holding != null) {
                 holding.GetComponent<Rigidbody>().velocity = (holding.transform.position-prevGrabPos) * throwMult;
                 holding = null;
             }
         }
+
+        // Make grabbed object stay in hand
         if (holding != null) {
             prevGrabPos = new Vector3(holding.transform.position.x, holding.transform.position.y,holding.transform.position.z);
             holding.transform.position = holdPos.position;
@@ -90,17 +90,20 @@ public class HandScript : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
+        // Detect if can grab object nearby
         if(other.CompareTag("Grabbable")) {
             grabbables.Add(other.gameObject);
         }    
     }
 
     private void OnTriggerExit(Collider other) {
+        // Detect if object cannot be grabbed anymore
         if(other.CompareTag("Grabbable")) {
             grabbables.Remove(other.gameObject);
         }    
     }
 
+    // Gravcast to create the teleportation line 
     void GravCast(Vector3 startPos, Vector3 direction, int killAfter, float lineDist) {
         List<Vector3> vectors = new List<Vector3>();
         Ray ray = new Ray(startPos, direction);
@@ -119,7 +122,7 @@ public class HandScript : MonoBehaviour
         ClearTeleportLine();
         return;
     }
-
+    
     void ClearTeleportLine() {
         lineRenderer.positionCount = 0;
         teleportPos = null;
