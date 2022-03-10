@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/FurnishedCabin/Scenes/Demo.unity
+    path: Assets/Models/FurnishedCabin/Scenes/Demo.unity
     guid: 0bce5907d797a4cd8b0660dc119867e8
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: d64f42606093abc40a858356dd8e5000, type: 2}
