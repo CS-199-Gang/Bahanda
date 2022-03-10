@@ -8,7 +8,7 @@ using UnityEngine;
 /// Class for Task instances
 public class Task : ScriptableObject
 {
-    public string name;
+    public string taskName;
     string description;
     string itemRequired;
     public int currQuantity = 0;
