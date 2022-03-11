@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public Text endText;
-    List<string> backpack = new List<string>(); 
 
-    public void AddItem(string item) {
-        backpack.Add(item);
+    InventoryManager inventoryManager;
+
+    private void Awake() {
+        inventoryManager = FindObjectOfType<InventoryManager>();
     }
 
     public void ShowEndText()
@@ -20,25 +21,7 @@ public class GameManager : MonoBehaviour
         bool flashlight = false;
         bool matchsticks = false;
 
-        foreach(string s in backpack) {
-            switch (s) {
-                case "food":
-                    food++;
-                    break;
-                case "water":
-                    water++;
-                    break;
-                case "first aid":
-                    firstAid = true;
-                    break;
-                case "flashlight":
-                    flashlight = true;
-                    break;
-                case "matchsticks":
-                    matchsticks = true;
-                    break;
-            }
-        }
+        // count items
 
         string waterTxt = water == 5 ? "You've collected enough water.\n" : "You will need more water than that.\n";
         string foodTxt = food == 5 ? "You've collected enough food.\n" : "More food would be advisable.\n";

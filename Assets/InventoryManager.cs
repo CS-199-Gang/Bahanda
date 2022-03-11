@@ -7,18 +7,6 @@ public class InventoryManager : MonoBehaviour
 {
     Dictionary<string, int> inventory = new Dictionary<string, int>();
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public Dictionary<string, int> GetInventory() {
         return inventory;
     }

@@ -6,23 +6,19 @@ using UnityEngine.UI;
 
 public class HandScript : MonoBehaviour
 {
-
-    LineRenderer lineRenderer;
-    GameManager gameManager;
-    List<GameObject> grabbables = new List<GameObject>();
-
     public string[] controls;
     public bool isLeft;
-    GameObject holding;
     public Transform player;
     public Transform holdPos;
     public Transform pointStart;
     public Transform pointEnd;
-    public GameObject text;
-    public Text endText;
-    const float throwMult = 75;
-    Vector3 prevGrabPos;
-    Vector3? teleportPos;
+    
+    private LineRenderer lineRenderer;
+    private GameManager gameManager;
+    private List<Grabbable> grabbables = new List<Grabbable>();
+    private Grabbable holding;
+    private Vector3? teleportPos;
+    private bool touchingBackpack;
 
     void Awake() {
         lineRenderer = GetComponent<LineRenderer>(); 
@@ -40,10 +36,10 @@ public class HandScript : MonoBehaviour
             ClearTeleportLine();
         }
         // Grabbing
-        if(Input.GetKeyDown(controls[0])){
-            GameObject nearest = null;
+        if(Input.GetKeyDown(controls[0])) {
+            Grabbable nearest = null;
             float dist = 0;
-            foreach(GameObject g in grabbables) {
+            foreach(Grabbable g in grabbables) {
                 if (nearest == null) {
                     nearest = g;
                     dist = Vector3.Distance(transform.position, g.transform.position);
@@ -57,50 +53,41 @@ public class HandScript : MonoBehaviour
             }
             if (nearest != null) {
                 holding = nearest;
+                nearest.onGrab();
             }
         }
 
         // Release Grab
-        if(Input.GetKeyUp(controls[0])){ 
+        if(Input.GetKeyUp(controls[0])) { 
             if (holding != null) {
-                holding.GetComponent<Rigidbody>().velocity = (holding.transform.position-prevGrabPos) * throwMult;
+                holding.onRelease(touchingBackpack);
                 holding = null;
             }
         }
 
         // Make grabbed object stay in hand
         if (holding != null) {
-            prevGrabPos = new Vector3(holding.transform.position.x, holding.transform.position.y,holding.transform.position.z);
             holding.transform.position = holdPos.position;
             holding.transform.rotation = holdPos.rotation;
-            holding.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            text.SetActive(true);
-            if(Input.GetKeyDown("joystick 1 button 3")) {
-                gameManager.AddItem(holding.GetComponent<Grabbable>().type);
-                grabbables.Remove(holding);
-                Destroy(holding);
-                holding = null;
-            }
-        } else {
-            text.SetActive(false);
-        }
-        if (Input.GetKeyDown("joystick 1 button 2")) {
-            gameManager.ShowEndText();
         }
     }
 
     private void OnTriggerEnter(Collider other) {
         // Detect if can grab object nearby
-        if(other.CompareTag("Grabbable")) {
-            grabbables.Add(other.gameObject);
-        }    
+        if (other.CompareTag("Grabbable")) {
+            grabbables.Add(other.GetComponent<Grabbable>());
+        } else if (other.CompareTag("Backpack")) {
+            touchingBackpack = true;
+        }
     }
 
     private void OnTriggerExit(Collider other) {
         // Detect if object cannot be grabbed anymore
-        if(other.CompareTag("Grabbable")) {
-            grabbables.Remove(other.gameObject);
-        }    
+        if (other.CompareTag("Grabbable")) {
+            grabbables.Remove(other.GetComponent<Grabbable>());
+        } else if (other.CompareTag("Backpack")) {
+            touchingBackpack = false;
+        }
     }
 
     // Gravcast to create the teleportation line 
