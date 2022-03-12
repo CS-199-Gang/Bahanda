@@ -8,7 +8,6 @@ public class BackpackDetector : MonoBehaviour
     private HandScript hs;
 
     private void OnTriggerEnter(Collider other) {
-        Debug.Log(other);
         // Detect if can grab object nearby
         if (other.CompareTag("Backpack")) {
             hs.SetTouchingBackpack(true);
