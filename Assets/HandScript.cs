@@ -17,6 +17,7 @@ public class HandScript : MonoBehaviour
     private bool touchingBackpack;
     private OVRGrabber ovrg;
     private Grabbable currGrabbed;
+    private GameObject toDestroy;
 
     public void SetTouchingBackpack(bool touchingBackpack) {
         this.touchingBackpack = touchingBackpack;
@@ -36,7 +37,7 @@ public class HandScript : MonoBehaviour
     private void Update() {
         // Teleporting
         if (isLeft) {
-            if ((Input.GetAxisRaw("L_Horizontal") != 0 || Input.GetAxisRaw("L_Vertical") != 0)) {
+            if (Input.GetAxisRaw("L_Horizontal") != 0 || Input.GetAxisRaw("L_Vertical") != 0) {
                 GravCast(transform.position, (pointEnd.position - pointStart.position).normalized, 15, 0.5f);
             } else {
                 if (teleportPos != null) {
@@ -49,9 +50,16 @@ public class HandScript : MonoBehaviour
         // Check if grabbed object
         if (ovrg.grabbedObject != null && currGrabbed == null) {
             currGrabbed = ovrg.grabbedObject.GetComponent<Grabbable>();
-            currGrabbed.onGrab();
+            currGrabbed.OnGrab();
+            if(toDestroy != null) {
+                Destroy(toDestroy);
+                toDestroy = null;
+            }
         } else if (ovrg.grabbedObject == null && currGrabbed != null) {
-            currGrabbed.onRelease(touchingBackpack);
+            if(touchingBackpack) {
+                toDestroy = currGrabbed.gameObject;
+            }
+            currGrabbed.OnRelease(touchingBackpack);
             currGrabbed = null;
         }
     }

@@ -635,6 +635,7 @@ Transform:
   m_Children:
   - {fileID: 3821836112621230207}
   - {fileID: 3821836113601651563}
+  - {fileID: 3821836112986695969}
   m_Father: {fileID: 3821836113848328745}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
@@ -1376,13 +1377,14 @@ GameObject:
   m_Component:
   - component: {fileID: 3821836112986695969}
   - component: {fileID: 3821836112986695966}
+  - component: {fileID: 1006451842771203260}
   m_Layer: 2
-  m_Name: GrabVolumeCone
+  m_Name: PointVolumeCone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3821836112986695969
 Transform:
   m_ObjectHideFlags: 0
@@ -1390,12 +1392,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3821836112986695968}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.0363, y: 0.023699999, z: 0.025400162}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3821836113937482182}
-  m_RootOrder: 0
+  m_Father: {fileID: 3821836112625415577}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!64 &3821836112986695966
 MeshCollider:
@@ -1411,6 +1413,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: fcd019dc7c1f92140963033f1669ec2f, type: 2}
+--- !u!114 &1006451842771203260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3821836112986695968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e911e7449962f4280cccd41cb28728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3821836113055545941
 GameObject:
   m_ObjectHideFlags: 0
@@ -2005,8 +2019,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0363, y: 0.0237, z: 0.0254}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 3821836113944278915}
+  m_Children: []
   m_Father: {fileID: 3822467219377850712}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2409,6 +2422,7 @@ Transform:
   m_Children:
   - {fileID: 3821836113599765599}
   - {fileID: 3821836113153673276}
+  - {fileID: 3821836113944278915}
   m_Father: {fileID: 3821836113848328745}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
@@ -2685,7 +2699,7 @@ GameObject:
   - component: {fileID: 3821836113601651560}
   - component: {fileID: 3821836113601651558}
   m_Layer: 2
-  m_Name: BackpackDetector (1)
+  m_Name: BackpackDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3835,8 +3849,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0363, y: 0.0237, z: 0.0254}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 3821836112986695969}
+  m_Children: []
   m_Father: {fileID: 3822932514063574095}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3850,13 +3863,14 @@ GameObject:
   m_Component:
   - component: {fileID: 3821836113944278915}
   - component: {fileID: 3821836113944278912}
+  - component: {fileID: 4755672217857782538}
   m_Layer: 2
-  m_Name: GrabVolumeCone
+  m_Name: PointVolumeCone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3821836113944278915
 Transform:
   m_ObjectHideFlags: 0
@@ -3864,12 +3878,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3821836113944278914}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.0363, y: 0.023699999, z: 0.025400162}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3821836113351280684}
-  m_RootOrder: 0
+  m_Father: {fileID: 3821836113473932377}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!64 &3821836113944278912
 MeshCollider:
@@ -3885,6 +3899,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: fcd019dc7c1f92140963033f1669ec2f, type: 2}
+--- !u!114 &4755672217857782538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3821836113944278914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e911e7449962f4280cccd41cb28728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3821836113947859877
 GameObject:
   m_ObjectHideFlags: 0
