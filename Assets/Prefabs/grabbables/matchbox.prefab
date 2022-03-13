@@ -11,7 +11,11 @@ GameObject:
   - component: {fileID: 5429480063264873115}
   - component: {fileID: 5339850678172955137}
   - component: {fileID: 8628477523083528706}
-  m_Layer: 0
+  - component: {fileID: 245827263930213428}
+  - component: {fileID: 5961634771560512673}
+  - component: {fileID: 8310802904077156743}
+  - component: {fileID: 4687145735522640291}
+  m_Layer: 2
   m_Name: matchbox
   m_TagString: Grabbable
   m_Icon: {fileID: 0}
@@ -70,6 +74,74 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: matchbox
+  description: Matchsticks
+  grabbableTextGO: {fileID: 1922327936099548127, guid: 00ab9b31d71f0bc47a24646847b2d987, type: 3}
+  textHeightOffset: 0.1
+  textPadding: 50
+--- !u!114 &245827263930213428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5425585104519691077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_allowOffhandGrab: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
+  m_snapOffset: {fileID: 0}
+  m_grabPoints: []
+--- !u!114 &5961634771560512673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5425585104519691077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 8
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!54 &8310802904077156743
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5425585104519691077}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &4687145735522640291
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5425585104519691077}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.37566873, y: 0.07502823, z: 0.18960582}
+  m_Center: {x: -0.055089377, y: 0.031192113, z: 0.0007901259}
 --- !u!1 &5425673429914998693
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,8 +153,7 @@ GameObject:
   - component: {fileID: 5429397226953065675}
   - component: {fileID: 5421882831649729779}
   - component: {fileID: 5411757731969376871}
-  - component: {fileID: 4776243923561931730}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MatchBox_1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,20 +223,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4776243923561931730
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5425673429914998693}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: f971fb17c1faf124ab6fa78d9aa66a92, type: 3}
 --- !u!1 &5425736606872299785
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,7 +234,7 @@ GameObject:
   - component: {fileID: 5429347217833048249}
   - component: {fileID: 5421837660646514707}
   - component: {fileID: 5411928274815076871}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MatchBox_1_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +315,7 @@ GameObject:
   - component: {fileID: 5424540299200614979}
   - component: {fileID: 5422133043640482001}
   - component: {fileID: 5412150688001415485}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MatchBox_1_2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +396,7 @@ GameObject:
   - component: {fileID: 5429451247910873129}
   - component: {fileID: 5421909818676998947}
   - component: {fileID: 5411668043313064735}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MatchBox_1_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +477,7 @@ GameObject:
   - component: {fileID: 5429490039888536675}
   - component: {fileID: 5417944613891525161}
   - component: {fileID: 5411880233534632551}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MatchBox_1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -501,7 +558,7 @@ GameObject:
   - component: {fileID: 5424423958210972803}
   - component: {fileID: 5421893177979823853}
   - component: {fileID: 5412153689811743701}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MatchBox_1_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
