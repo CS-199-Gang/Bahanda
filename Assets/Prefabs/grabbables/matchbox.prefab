@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5961634771560512673}
   - component: {fileID: 8310802904077156743}
   - component: {fileID: 4687145735522640291}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: matchbox
   m_TagString: Grabbable
   m_Icon: {fileID: 0}
@@ -76,8 +76,10 @@ MonoBehaviour:
   type: matchbox
   description: Matchsticks
   grabbableTextGO: {fileID: 1922327936099548127, guid: 00ab9b31d71f0bc47a24646847b2d987, type: 3}
-  textHeightOffset: 0.1
+  canBackpack: 1
+  textHeightOffset: 0.05
   textPadding: 50
+  outline: {fileID: 0}
 --- !u!114 &245827263930213428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 8
+  outlineWidth: 4
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
@@ -153,7 +155,7 @@ GameObject:
   - component: {fileID: 5429397226953065675}
   - component: {fileID: 5421882831649729779}
   - component: {fileID: 5411757731969376871}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: MatchBox_1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +236,7 @@ GameObject:
   - component: {fileID: 5429347217833048249}
   - component: {fileID: 5421837660646514707}
   - component: {fileID: 5411928274815076871}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: MatchBox_1_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +317,7 @@ GameObject:
   - component: {fileID: 5424540299200614979}
   - component: {fileID: 5422133043640482001}
   - component: {fileID: 5412150688001415485}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: MatchBox_1_2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +398,7 @@ GameObject:
   - component: {fileID: 5429451247910873129}
   - component: {fileID: 5421909818676998947}
   - component: {fileID: 5411668043313064735}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: MatchBox_1_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,7 +479,7 @@ GameObject:
   - component: {fileID: 5429490039888536675}
   - component: {fileID: 5417944613891525161}
   - component: {fileID: 5411880233534632551}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: MatchBox_1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -558,7 +560,7 @@ GameObject:
   - component: {fileID: 5424423958210972803}
   - component: {fileID: 5421893177979823853}
   - component: {fileID: 5412153689811743701}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: MatchBox_1_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -19,4 +19,13 @@ public class InventoryManager : MonoBehaviour
             inventory.Add(item, 1);
         }
     }
+
+    public void RemoveItem(string item) {
+        if (inventory.ContainsKey(item)) {
+            inventory[item] -= 1;
+        }
+        else {
+            inventory.Add(item, 0);
+        }
+    }
 }

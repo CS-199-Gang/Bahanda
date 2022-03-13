@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8077277363833158836}
   - component: {fileID: 6326650755856185322}
   - component: {fileID: 141911492629639031}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: firstaid
   m_TagString: Grabbable
   m_Icon: {fileID: 0}
@@ -121,8 +121,10 @@ MonoBehaviour:
   type: firstaid
   description: First Aid Kit
   grabbableTextGO: {fileID: 1922327936099548127, guid: 00ab9b31d71f0bc47a24646847b2d987, type: 3}
-  textHeightOffset: 0.1
+  canBackpack: 1
+  textHeightOffset: 0.05
   textPadding: 50
+  outline: {fileID: 0}
 --- !u!64 &1839315092618867683
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -168,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 8
+  outlineWidth: 4
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
