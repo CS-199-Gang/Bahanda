@@ -10,6 +10,8 @@ public class HandScript : MonoBehaviour
     public Transform player;
     public Transform pointStart;
     public Transform pointEnd;
+    [SerializeField]
+    LayerMask teleportLayerMask;
     
     private float heightOffset;
     private LineRenderer lineRenderer;
@@ -71,7 +73,7 @@ public class HandScript : MonoBehaviour
 
         vectors.Add(transform.position);
         for (int i = 0; i < killAfter; i++) {
-            if(Physics.Raycast(ray, out RaycastHit hit, 1f)) {
+            if(Physics.Raycast(ray, out RaycastHit hit, 1f, teleportLayerMask)) {
                 teleportPos = hit.point;
                 vectors.Add(hit.point);
                 DrawTeleportLine(vectors);

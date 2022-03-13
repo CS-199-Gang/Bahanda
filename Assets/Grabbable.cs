@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(OVRGrabbable))]
-[RequireComponent(typeof(Outline))]
 public class Grabbable : MonoBehaviour
 {
     public string type;
@@ -13,6 +12,8 @@ public class Grabbable : MonoBehaviour
     private string description;
     [SerializeField]
     private GameObject grabbableTextGO;
+    [SerializeField]
+    private bool canBackpack;
     private GrabbableText text;
 
     [SerializeField]
@@ -21,24 +22,26 @@ public class Grabbable : MonoBehaviour
     private float textPadding;
 
     private int pointCounter = 0;
+    [SerializeField]
     private Outline outline;
     private float timer;
-    
+    private InventoryManager im;
 
     private void Awake() {
-        outline = GetComponent<Outline>();
+        outline ??= GetComponent<Outline>();
         outline.enabled = false;
-        
+        im = FindObjectOfType<InventoryManager>();
+
         GameObject canvas = GameObject.FindGameObjectWithTag("Canvas");  
-        Debug.Log(canvas);
-        text = Instantiate(grabbableTextGO, transform.position, Quaternion.identity, canvas.transform).GetComponent<GrabbableText>();
+        text = Instantiate(grabbableTextGO, transform.position - Vector3.up * 100,
+            Quaternion.identity, canvas.transform).GetComponent<GrabbableText>();
         text.SetGrabbable(this);
         text.gameObject.SetActive(false);
     }
 
     private void Start() {
         text.SetDescription(description);
-        text.SetHeightOffset(GetComponent<Collider>().bounds.size.y + textHeightOffset);
+        text.SetHeightOffset(outline.GetComponent<Collider>().bounds.size.y + textHeightOffset);
         text.SetTextPadding(textPadding);
     }
 
@@ -57,8 +60,8 @@ public class Grabbable : MonoBehaviour
     }
 
     public void OnRelease(bool touchingBackpack) {
-        if (touchingBackpack) {
-            FindObjectOfType<InventoryManager>().AddItem(type);
+        if (touchingBackpack && canBackpack) {
+            AddThisItem();
             gameObject.SetActive(false);
         }
     }
@@ -83,5 +86,13 @@ public class Grabbable : MonoBehaviour
         if (text != null) {
             Destroy(text.gameObject);
         }
+    }
+
+    public void AddThisItem() {
+        im.AddItem(type);
+    }
+
+    public void RemoveThisItem() {
+        im.RemoveItem(type);
     }
 }
