@@ -40,7 +40,7 @@ public class ConstrainedGrabbable : OVRGrabbable
             handleRB.angularVelocity = Vector3.zero;
             objectRB.velocity = Vector3.zero;
             objectRB.angularVelocity = Vector3.zero;
-            stop++;
+            stop--;
         }
     }
 
