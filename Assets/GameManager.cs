@@ -33,6 +33,24 @@ public class GameManager : MonoBehaviour
 
         // count items
 
+        Dictionary<string, int> inventory = inventoryManager.GetInventory();
+
+        if (inventory.ContainsKey("food")) {
+            food = inventory["food"];
+        }
+        if (inventory.ContainsKey("water")) {
+            water = inventory["water"];
+        }
+        if (inventory.ContainsKey("firstAid")) {
+            firstAid = true;
+        }
+        if (inventory.ContainsKey("flashlight")) {
+            flashlight = true;
+        }
+        if (inventory.ContainsKey("matchsticks")) {
+            matchsticks = true;
+        }
+
         string waterTxt = water == 5 ? "You've collected enough water.\n" : "You will need more water than that.\n";
         string foodTxt = food == 5 ? "You've collected enough food.\n" : "More food would be advisable.\n";
         string firstAidTxt = firstAid ? "The first aid you got will help in emergencies.\n" : "Some first aid would be very helpful.\n";
