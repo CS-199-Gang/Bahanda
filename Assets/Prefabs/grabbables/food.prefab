@@ -122,6 +122,7 @@ MonoBehaviour:
   description: Canned Food (1 meal)
   grabbableTextGO: {fileID: 1922327936099548127, guid: 00ab9b31d71f0bc47a24646847b2d987, type: 3}
   canBackpack: 1
+  hasOutline: 1
   textHeightOffset: 0.05
   textPadding: 50
   outline: {fileID: 0}

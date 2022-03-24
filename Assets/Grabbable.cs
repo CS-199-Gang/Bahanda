@@ -14,6 +14,8 @@ public class Grabbable : MonoBehaviour
     private GameObject grabbableTextGO;
     [SerializeField]
     private bool canBackpack;
+    [SerializeField]
+    private bool hasOutline;
     private GrabbableText text;
 
     [SerializeField]
@@ -28,25 +30,28 @@ public class Grabbable : MonoBehaviour
     private InventoryManager im;
 
     private void Awake() {
-        outline ??= GetComponent<Outline>();
-        outline.enabled = false;
+        if (hasOutline){
+            outline ??= GetComponent<Outline>();
+            outline.enabled = false;
+            GameObject canvas = GameObject.FindGameObjectWithTag("Canvas");  
+            text = Instantiate(grabbableTextGO, transform.position - Vector3.up * 100,
+                Quaternion.identity, canvas.transform).GetComponent<GrabbableText>();
+            text.SetGrabbable(this);
+            text.gameObject.SetActive(false);
+        }
         im = FindObjectOfType<InventoryManager>();
-
-        GameObject canvas = GameObject.FindGameObjectWithTag("Canvas");  
-        text = Instantiate(grabbableTextGO, transform.position - Vector3.up * 100,
-            Quaternion.identity, canvas.transform).GetComponent<GrabbableText>();
-        text.SetGrabbable(this);
-        text.gameObject.SetActive(false);
     }
 
     private void Start() {
-        text.SetDescription(description);
-        text.SetHeightOffset(outline.GetComponent<Collider>().bounds.size.y + textHeightOffset);
-        text.SetTextPadding(textPadding);
+        if (hasOutline){
+            text.SetDescription(description);
+            text.SetHeightOffset(outline.GetComponent<Collider>().bounds.size.y + textHeightOffset);
+            text.SetTextPadding(textPadding);
+        }
     }
 
     private void Update() {
-        if (pointCounter > 0) {
+        if (pointCounter > 0 && hasOutline) {
             if (timer < text.showTimer) {
                 timer += Time.deltaTime;
             } else {
@@ -68,14 +73,14 @@ public class Grabbable : MonoBehaviour
 
     public void OnPoint() {
         pointCounter++;
-        if (pointCounter > 0) {
+        if (pointCounter > 0 && hasOutline) {
             outline.enabled = true;
         }
     }
 
     public void OnLeave() {
         pointCounter--;
-        if (pointCounter == 0) {
+        if (pointCounter == 0 && hasOutline) {
             outline.enabled = false;
             text.gameObject.SetActive(false);
             timer = 0;

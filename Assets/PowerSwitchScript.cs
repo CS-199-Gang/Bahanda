@@ -14,9 +14,8 @@ public class PowerSwitchScript : MonoBehaviour
     private Grabbable grabbable;
     private bool isOn = false;
 
-    void Update()
-    {
-        if (mainObject.transform.rotation.y < midPointRotation) {
+    void Update() {
+        if (mainObject.transform.rotation.y < midPointRotation && mainObject.transform.rotation.x < midPointRotation) {
             if (!isOn) {
                 isOn = true;
                 indicator.color = Color.green;
@@ -30,14 +29,4 @@ public class PowerSwitchScript : MonoBehaviour
             }
         }
     }
-
-        public static float Clamp0360(float eulerAngles)
-      {
-          float result = eulerAngles - Mathf.CeilToInt(eulerAngles / 360f) * 360f;
-          if (result < 0)
-          {
-              result += 360f;
-          }
-          return result;
-      }
 }
