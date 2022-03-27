@@ -245,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c87613f91d479ac44916e91737243a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endText: {fileID: 1673688292}
 --- !u!4 &425212895
 Transform:
   m_ObjectHideFlags: 0
@@ -288,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d7dfc4f789156e4e89ff197143294d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endText: {fileID: 1673688292}
+  mainCamera: {fileID: 0}
 --- !u!4 &609081549
 Transform:
   m_ObjectHideFlags: 0

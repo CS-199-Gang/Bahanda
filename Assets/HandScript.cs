@@ -47,10 +47,6 @@ public class HandScript : MonoBehaviour
                 }
                 ClearTeleportLine();
             }
-
-            if (OVRInput.Get(OVRInput.Button.Four)) {
-                LoadEndScene();
-            }
         }
 
         // Check if grabbed object
@@ -98,9 +94,5 @@ public class HandScript : MonoBehaviour
     void DrawTeleportLine(List<Vector3> vectors) {
         lineRenderer.positionCount = vectors.Count;
         lineRenderer.SetPositions(vectors.ToArray());
-    }
-
-    private void LoadEndScene() {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("EndScene");
     }
 }

@@ -3799,7 +3799,7 @@ GameObject:
   - component: {fileID: 454292954}
   - component: {fileID: 454292953}
   m_Layer: 0
-  m_Name: Task Manager
+  m_Name: TaskManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5567,7 +5567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 647317274}
-  nextScene: ScenarioOneEndScene
+  nextScene: ScenarioTwoEndScene
 --- !u!4 &674511668
 Transform:
   m_ObjectHideFlags: 0

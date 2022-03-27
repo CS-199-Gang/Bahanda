@@ -13,6 +13,7 @@ public class TaskManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(this);
         tasks[0] = new List<Task>();
         tasks[0].Add(Task.CreateInstance(
             "Gather Food",
@@ -35,7 +36,7 @@ public class TaskManager : MonoBehaviour
         tasks[0].Add(Task.CreateInstance(
             "Get First Aid",
             "Get First Aid",
-            "firstAid",
+            "firstaid",
             1,
             "The first aid you got will help in emergencies.",
             "Some first aid would be very helpful.",
@@ -53,7 +54,7 @@ public class TaskManager : MonoBehaviour
         tasks[0].Add(Task.CreateInstance(
             "Get Matchsticks",
             "Get matchsticks",
-            "matchsticks",
+            "matchbox",
             1,
             "The matchsticks you got will help if you need to start a fire.",
             "Some matchsticks would help in case you need to start a fire.",
@@ -92,7 +93,7 @@ public class TaskManager : MonoBehaviour
         }
     }
 
-    string GetSceneFeedback(int scenario) {
+    public string GetSceneFeedback(int scenario) {
         string msg = "";
         foreach(Task task in tasks[scenario]) {
             msg += GetTaskFeedback(task) + "\n";
