@@ -5,11 +5,21 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance; 
     public Text endText;
 
     InventoryManager inventoryManager;
+    public Camera mainCamera;
 
     private void Awake() {
+        if(Instance == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            Instance = this;
+        } else if(Instance != this)
+        {
+            Destroy(gameObject);
+        }
         inventoryManager = FindObjectOfType<InventoryManager>();
     }
 
@@ -22,6 +32,24 @@ public class GameManager : MonoBehaviour
         bool matchsticks = false;
 
         // count items
+
+        Dictionary<string, int> inventory = inventoryManager.GetInventory();
+
+        if (inventory.ContainsKey("food")) {
+            food = inventory["food"];
+        }
+        if (inventory.ContainsKey("water")) {
+            water = inventory["water"];
+        }
+        if (inventory.ContainsKey("firstAid")) {
+            firstAid = true;
+        }
+        if (inventory.ContainsKey("flashlight")) {
+            flashlight = true;
+        }
+        if (inventory.ContainsKey("matchsticks")) {
+            matchsticks = true;
+        }
 
         string waterTxt = water == 5 ? "You've collected enough water.\n" : "You will need more water than that.\n";
         string foodTxt = food == 5 ? "You've collected enough food.\n" : "More food would be advisable.\n";

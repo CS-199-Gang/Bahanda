@@ -1,45 +1,103 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
+[RequireComponent(typeof(OVRGrabbable))]
 public class Grabbable : MonoBehaviour
 {
     public string type;
-    
-    private bool isGrabbed = false;
-    private bool isReleased = false;
-    private Vector3 prevGrabPos;
-    private Rigidbody rb;
 
-    const float THROWMULT = 75f;
+    [SerializeField]
+    private string description;
+    [SerializeField]
+    private GameObject grabbableTextGO;
+    [SerializeField]
+    private bool canBackpack;
+    [SerializeField]
+    private bool hasOutline;
+    private GrabbableText text;
+
+    [SerializeField]
+    private float textHeightOffset;
+    [SerializeField]
+    private float textPadding;
+
+    private int pointCounter = 0;
+    [SerializeField]
+    private Outline outline;
+    private float timer;
+    private InventoryManager im;
 
     private void Awake() {
-        rb = GetComponent<Rigidbody>();
+        if (hasOutline){
+            outline ??= GetComponent<Outline>();
+            outline.enabled = false;
+            GameObject canvas = GameObject.FindGameObjectWithTag("Canvas");  
+            text = Instantiate(grabbableTextGO, transform.position - Vector3.up * 100,
+                Quaternion.identity, canvas.transform).GetComponent<GrabbableText>();
+            text.SetGrabbable(this);
+            text.gameObject.SetActive(false);
+        }
+        im = FindObjectOfType<InventoryManager>();
     }
 
-    private void FixedUpdate() {
-        if (isGrabbed) {
-            prevGrabPos = transform.position;
-            
-        }
-        if (isReleased) {
-            rb.velocity = (transform.position - prevGrabPos) * THROWMULT;
-            isReleased = false;
+    private void Start() {
+        if (hasOutline){
+            text.SetDescription(description);
+            text.SetHeightOffset(outline.GetComponent<Collider>().bounds.size.y + textHeightOffset);
+            text.SetTextPadding(textPadding);
         }
     }
 
-    public void onGrab() {
-        isGrabbed = true;
-        rb.isKinematic = true;
+    private void Update() {
+        if (pointCounter > 0 && hasOutline) {
+            if (timer < text.showTimer) {
+                timer += Time.deltaTime;
+            } else {
+                text.gameObject.SetActive(true);
+            }
+        }
     }
 
-    public void onRelease(bool touchingBackpack) {
-        isGrabbed = false;
-        isReleased = true;
-        rb.isKinematic = false;
-        if (touchingBackpack) {
-            FindObjectOfType<InventoryManager>().AddItem(type);
-            Destroy(gameObject);
+    public void OnGrab() {
+        return;
+    }
+
+    public void OnRelease(bool touchingBackpack) {
+        if (touchingBackpack && canBackpack) {
+            AddThisItem();
+            gameObject.SetActive(false);
         }
+    }
+
+    public void OnPoint() {
+        pointCounter++;
+        if (pointCounter > 0 && hasOutline) {
+            outline.enabled = true;
+        }
+    }
+
+    public void OnLeave() {
+        pointCounter--;
+        if (pointCounter == 0 && hasOutline) {
+            outline.enabled = false;
+            text.gameObject.SetActive(false);
+            timer = 0;
+        }
+    }
+    
+    private void OnDestroy() {
+        if (text != null) {
+            Destroy(text.gameObject);
+        }
+    }
+
+    public void AddThisItem() {
+        im.AddItem(type);
+    }
+
+    public void RemoveThisItem() {
+        im.RemoveItem(type);
     }
 }

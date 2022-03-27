@@ -6,14 +6,16 @@ TagManager:
   tags:
   - Grabbable
   - Backpack
+  - Canvas
+  - Socket
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - Grabbable
   - 
   - 
   - 

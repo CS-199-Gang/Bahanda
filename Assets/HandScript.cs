@@ -3,90 +3,70 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+[RequireComponent(typeof(OVRGrabber))]
 public class HandScript : MonoBehaviour
 {
-    public string[] controls;
     public bool isLeft;
     public Transform player;
-    public Transform holdPos;
     public Transform pointStart;
     public Transform pointEnd;
+    [SerializeField]
+    LayerMask teleportLayerMask;
     
+    private float heightOffset;
     private LineRenderer lineRenderer;
-    private GameManager gameManager;
-    private List<Grabbable> grabbables = new List<Grabbable>();
-    private Grabbable holding;
     private Vector3? teleportPos;
     private bool touchingBackpack;
+    private OVRGrabber ovrg;
+    private Grabbable currGrabbed;
+    private GameObject toDestroy;
 
-    void Awake() {
-        lineRenderer = GetComponent<LineRenderer>(); 
-        gameManager = GameObject.FindObjectOfType<GameManager>();
+    public void SetTouchingBackpack(bool touchingBackpack) {
+        this.touchingBackpack = touchingBackpack;
     }
 
-    void Update() {
+    private void Awake() {
+        if (isLeft) {
+            lineRenderer = GetComponent<LineRenderer>(); 
+        }
+        ovrg = GetComponent<OVRGrabber>();
+    }
+
+    private void Start() {
+        heightOffset = player.transform.position.y;
+    }
+
+    private void Update() {
         // Teleporting
-        if ((Input.GetAxisRaw("L_Horizontal") != 0 || Input.GetAxisRaw("L_Vertical") != 0) && isLeft) {
-            GravCast(transform.position, (pointEnd.position-pointStart.position).normalized, 15, 0.5f);
-        } else {
-            if (teleportPos != null) {
-                player.transform.position = (Vector3) teleportPos;
-            }
-            ClearTeleportLine();
-        }
-        // Grabbing
-        if(Input.GetKeyDown(controls[0])) {
-            Grabbable nearest = null;
-            float dist = 0;
-            foreach(Grabbable g in grabbables) {
-                if (nearest == null) {
-                    nearest = g;
-                    dist = Vector3.Distance(transform.position, g.transform.position);
-                } else {
-                    float newDist = Vector3.Distance(transform.position,g.transform.position);
-                    if (newDist < dist) {
-                        nearest = g;
-                        dist = newDist;
-                    }
+        if (isLeft) {
+            if (Input.GetAxisRaw("L_Horizontal") != 0 || Input.GetAxisRaw("L_Vertical") != 0) {
+                GravCast(transform.position, (pointEnd.position - pointStart.position).normalized, 15, 0.5f);
+            } else {
+                if (teleportPos != null) {
+                    player.transform.position = (Vector3) teleportPos + Vector3.up * heightOffset;
                 }
+                ClearTeleportLine();
             }
-            if (nearest != null) {
-                holding = nearest;
-                nearest.onGrab();
-            }
-        }
 
-        // Release Grab
-        if(Input.GetKeyUp(controls[0])) { 
-            if (holding != null) {
-                holding.onRelease(touchingBackpack);
-                holding = null;
+            if (OVRInput.Get(OVRInput.Button.Four)) {
+                LoadEndScene();
             }
         }
 
-        // Make grabbed object stay in hand
-        if (holding != null) {
-            holding.transform.position = holdPos.position;
-            holding.transform.rotation = holdPos.rotation;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other) {
-        // Detect if can grab object nearby
-        if (other.CompareTag("Grabbable")) {
-            grabbables.Add(other.GetComponent<Grabbable>());
-        } else if (other.CompareTag("Backpack")) {
-            touchingBackpack = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other) {
-        // Detect if object cannot be grabbed anymore
-        if (other.CompareTag("Grabbable")) {
-            grabbables.Remove(other.GetComponent<Grabbable>());
-        } else if (other.CompareTag("Backpack")) {
-            touchingBackpack = false;
+        // Check if grabbed object
+        if (ovrg.grabbedObject != null && currGrabbed == null) {
+            currGrabbed = ovrg.grabbedObject.GetComponent<Grabbable>();
+            currGrabbed.OnGrab();
+            if(toDestroy != null) {
+                Destroy(toDestroy);
+                toDestroy = null;
+            }
+        } else if (ovrg.grabbedObject == null && currGrabbed != null) {
+            if(touchingBackpack) {
+                toDestroy = currGrabbed.gameObject;
+            }
+            currGrabbed.OnRelease(touchingBackpack);
+            currGrabbed = null;
         }
     }
 
@@ -95,9 +75,9 @@ public class HandScript : MonoBehaviour
         List<Vector3> vectors = new List<Vector3>();
         Ray ray = new Ray(startPos, direction);
 
-        vectors.Add(pointEnd.position);
+        vectors.Add(transform.position);
         for (int i = 0; i < killAfter; i++) {
-            if(Physics.Raycast(ray, out RaycastHit hit, 1f)) {
+            if(Physics.Raycast(ray, out RaycastHit hit, 1f, teleportLayerMask)) {
                 teleportPos = hit.point;
                 vectors.Add(hit.point);
                 DrawTeleportLine(vectors);
@@ -118,5 +98,9 @@ public class HandScript : MonoBehaviour
     void DrawTeleportLine(List<Vector3> vectors) {
         lineRenderer.positionCount = vectors.Count;
         lineRenderer.SetPositions(vectors.ToArray());
+    }
+
+    private void LoadEndScene() {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("EndScene");
     }
 }
