@@ -5,15 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Models/FurnishedCabin/Scenes/Demo.unity
-    guid: 0bce5907d797a4cd8b0660dc119867e8
-  - enabled: 0
-    path: Assets/Scenes/EndScene.unity
-    guid: 69705aa9d7f13a54ba9a03dc6fddf871
   - enabled: 1
     path: Assets/Main Menu.unity
     guid: 8b19b0de61a643b45b5839cc4a5792ab
+  - enabled: 1
+    path: Assets/Scenario 1.unity
+    guid: 643a082e28cda72448e40e5c6a91c0d9
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: 69705aa9d7f13a54ba9a03dc6fddf871
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: d64f42606093abc40a858356dd8e5000, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 7b62affef02af1f448a35fb8f0deabd5, type: 2}

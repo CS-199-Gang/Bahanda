@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class MainMenuScript : MonoBehaviour
 {
-    [SerializeField]
-    GameObject startMenu;
-
-    public void StartButton() {
-        startMenu.SetActive(true);
+    public void StartGame() {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Scenario 1");
     }
 }
