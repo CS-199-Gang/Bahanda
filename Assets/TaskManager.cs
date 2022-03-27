@@ -13,13 +13,59 @@ public class TaskManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        tasks[0] = new List<Task>();
+        tasks[0].Add(Task.CreateInstance(
+            "Gather Food",
+            "Gather food",
+            "food",
+            5,
+            "You've collected enough food",
+            "More food would be advisable.",
+            "You have not collected any food"
+        ));
+        tasks[0].Add(Task.CreateInstance(
+            "Collect Water",
+            "Collect water",
+            "water",
+            5,
+            "You've collected enough water",
+            "You will need more water than that.",
+            "You have not collected any water"
+        ));
+        tasks[0].Add(Task.CreateInstance(
+            "Get First Aid",
+            "Get First Aid",
+            "firstAid",
+            1,
+            "The first aid you got will help in emergencies.",
+            "Some first aid would be very helpful.",
+            "Some first aid would be very helpful."
+        ));
+        tasks[0].Add(Task.CreateInstance(
+            "Get a Flashlight",
+            "Get a flashlight",
+            "firstAid",
+            1,
+            "You have a flashlight for when power goes out.",
+            "A flashlight would help in case the power goes out.",
+            "Some first aid would be very helpful."
+        ));
+        tasks[0].Add(Task.CreateInstance(
+            "Get Matchsticks",
+            "Get matchsticks",
+            "matchsticks",
+            1,
+            "The matchsticks you got will help if you need to start a fire.",
+            "Some matchsticks would help in case you need to start a fire.",
+            "Some matchsticks would help in case you need to start a fire."
+        ));
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // hardcode calling scenario 1 tasks for now
+        UpdateTasks(0);
     }
 
     void Awake() {
@@ -29,10 +75,10 @@ public class TaskManager : MonoBehaviour
     void UpdateTasks(int scenario) {
         Dictionary<string, int> inventory = inventoryManager.GetInventory();
         foreach(Task task in tasks[scenario]) {
-            task.currQuantity = inventory[task.name];
-
-            
+            if (inventory.ContainsKey(task.itemRequired))
+                task.currQuantity = inventory[task.itemRequired];
         }
+        Debug.Log(GetSceneFeedback(0));
     }
 
     string GetTaskFeedback(Task task) {
@@ -46,10 +92,11 @@ public class TaskManager : MonoBehaviour
         }
     }
 
-    void GetSceneFeedback(int scenario) {
+    string GetSceneFeedback(int scenario) {
         string msg = "";
         foreach(Task task in tasks[scenario]) {
             msg += GetTaskFeedback(task) + "\n";
         }
+        return msg;
     }
 }

@@ -10,7 +10,7 @@ public class Task : ScriptableObject
 {
     public string taskName;
     string description;
-    string itemRequired;
+    public string itemRequired;
     public int currQuantity = 0;
     public int targetQuantity = 1;
     public string msgComplete;
@@ -18,4 +18,17 @@ public class Task : ScriptableObject
     public string msgZero;
     //public string[] feedbackMessages = new string[3];
     //public int state = 0;
+
+    public static Task CreateInstance(string taskName, string description, string itemRequired, int targetQuantity, string msgComplete, string msgIncomplete, string msgZero) {
+        Task task = CreateInstance<Task>();
+        task.taskName = taskName;
+        task.description = description;
+        task.itemRequired = itemRequired;
+        task.targetQuantity = targetQuantity;
+        task.msgComplete = msgComplete;
+        task.msgIncomplete = msgIncomplete;
+        task.msgZero = msgZero;
+
+        return task;
+    }
 }
