@@ -6,10 +6,16 @@ using UnityEngine.UI;
 [RequireComponent(typeof(OVRGrabber))]
 public class HandScript : MonoBehaviour
 {
-    public bool isLeft;
-    public Transform player;
-    public Transform pointStart;
-    public Transform pointEnd;
+    [SerializeField]
+    bool isLeft;
+    [SerializeField]
+    bool canTeleport;
+    [SerializeField]
+    Transform player;
+    [SerializeField]
+    Transform pointStart;
+    [SerializeField]
+    Transform pointEnd;
     [SerializeField]
     LayerMask teleportLayerMask;
     
@@ -38,7 +44,7 @@ public class HandScript : MonoBehaviour
 
     private void Update() {
         // Teleporting
-        if (isLeft) {
+        if (isLeft && canTeleport) {
             if (Input.GetAxisRaw("L_Horizontal") != 0 || Input.GetAxisRaw("L_Vertical") != 0) {
                 GravCast(transform.position, (pointEnd.position - pointStart.position).normalized, 15, 0.5f);
             } else {
