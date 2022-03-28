@@ -1,12 +1,17 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EndScene : MonoBehaviour {
 
     GameManager gameManager;
 
+    public Text endText;
+
+    TaskManager taskManager;
+
     private void Awake() {
-        gameManager = FindObjectOfType<GameManager>();
+        taskManager = FindObjectOfType<TaskManager>();
     }
 
     private void OnEnable() {
@@ -18,7 +23,8 @@ public class EndScene : MonoBehaviour {
     }
 
     private void ShowEndText(Scene scene, LoadSceneMode mode) {
-        gameManager.ShowEndText();
+        endText.text = taskManager.GetSceneFeedback(0);
+        endText.gameObject.SetActive(true);
     }
 
 }

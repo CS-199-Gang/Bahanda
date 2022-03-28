@@ -9,8 +9,17 @@ EditorBuildSettings:
     path: Assets/Models/FurnishedCabin/Scenes/Demo.unity
     guid: 0bce5907d797a4cd8b0660dc119867e8
   - enabled: 1
-    path: Assets/Scenes/EndScene.unity
+    path: Assets/Scenes/ScenarioOneEndScene.unity
     guid: 69705aa9d7f13a54ba9a03dc6fddf871
+  - enabled: 1
+    path: Assets/Scenes/ScenarioOneScene.unity
+    guid: 0b5f1febe05ce4d4d8fb101d9b669420
+  - enabled: 1
+    path: Assets/Scenes/ScenarioTwoEndScene.unity
+    guid: bae1fdf60f7016d4d9581864283d9e3e
+  - enabled: 1
+    path: Assets/Scenes/ScenarioTwoScene.unity
+    guid: 20966bf653c635d49814c2d626e43c14
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: d64f42606093abc40a858356dd8e5000, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 7b62affef02af1f448a35fb8f0deabd5, type: 2}
