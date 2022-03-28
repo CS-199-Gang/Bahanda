@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Models/FurnishedCabin/Scenes/Demo.unity
-    guid: 0bce5907d797a4cd8b0660dc119867e8
+    path: Assets/Main Menu.unity
+    guid: 8b19b0de61a643b45b5839cc4a5792ab
+  - enabled: 1
+    path: Assets/Scenario 1.unity
+    guid: 643a082e28cda72448e40e5c6a91c0d9
   - enabled: 1
     path: Assets/Scenes/ScenarioOneEndScene.unity
     guid: 69705aa9d7f13a54ba9a03dc6fddf871
