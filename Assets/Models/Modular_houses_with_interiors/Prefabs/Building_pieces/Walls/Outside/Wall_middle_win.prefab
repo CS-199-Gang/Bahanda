@@ -441,7 +441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d5405c5b2a467af45862915797b8ea6b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.96
+      value: 2.607
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d5405c5b2a467af45862915797b8ea6b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -499,19 +499,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: d5405c5b2a467af45862915797b8ea6b, type: 3}
   m_PrefabInstance: {fileID: 586858327076861633}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &5017701906233442022
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8864523999160971208}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.0050000013, y: 1.45, z: 1.5000004}
-  m_Center: {x: -0.0000076293945, y: 0, z: 0}
 --- !u!54 &1498563922
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -528,6 +515,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &5017701906233442022
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8864523999160971208}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0050000013, y: 1.45, z: 1.5000004}
+  m_Center: {x: -0.0000076293945, y: 0, z: 0}
 --- !u!153 &1498563921
 ConfigurableJoint:
   m_ObjectHideFlags: 0
@@ -539,8 +539,8 @@ ConfigurableJoint:
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 0
-  m_ConnectedAnchor: {x: -1.3258649, y: 2.75, z: -6.00448}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 1.749, y: 1.96, z: -0.15}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
