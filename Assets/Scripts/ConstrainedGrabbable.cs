@@ -17,6 +17,7 @@ public class ConstrainedGrabbable : OVRGrabbable
     protected override void Start() {
         base.Start();
         handleRB = handle.GetComponent<Rigidbody>();
+        objectRB.isKinematic = true;
     }
 
     public override void GrabBegin(OVRGrabber hand, Collider grabPoint) {
@@ -24,6 +25,7 @@ public class ConstrainedGrabbable : OVRGrabbable
         StartCoroutine(UpdateHandle());
         Debug.Log(grabbedBy);
         grabbedBy.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+        objectRB.isKinematic = false;
     }
 
     IEnumerator UpdateHandle() {
@@ -52,5 +54,6 @@ public class ConstrainedGrabbable : OVRGrabbable
         
         grabbedBy.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
         base.GrabEnd(linearVelocity, angularVelocity);
+        objectRB.isKinematic = true;
     }
 }
