@@ -6,6 +6,8 @@ public class PlugGrabbable : OVRGrabbable
 {
     [SerializeField]
     private float attachCD = 1;
+    [SerializeField]
+    Socket attachedSocket;
 
     private Socket socket;
     private bool canAttach = true;
@@ -14,6 +16,7 @@ public class PlugGrabbable : OVRGrabbable
     protected override void Start() {
         base.Start();
         rb = GetComponent<Rigidbody>();
+        Attach(attachedSocket);
     }
 
     public override void GrabBegin(OVRGrabber hand, Collider grabPoint) {
@@ -23,24 +26,28 @@ public class PlugGrabbable : OVRGrabbable
             socket.Release();
             socket = null;
             canAttach = false;
-            //rb.isKinematic = false;
             Invoke("AllowAttach", attachCD);
         }
     }
 
-
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Socket") && canAttach && m_grabbedBy != null) {
             Socket socket = other.GetComponent<Socket>();
-            if (!socket.IsOccupied()) {
-                socket.Occupy(this);
-                this.socket = socket;
-                transform.position = other.transform.position;
-                transform.rotation = other.transform.rotation;
-                m_grabbedBy.ForceRelease(this);
-                rb.isKinematic = true;
-            }
+            Attach(socket);
         }    
+    }
+
+    private void Attach(Socket socket) {
+        if (!socket.IsOccupied()) {
+            socket.Occupy(this);
+            this.socket = socket;
+            transform.position = socket.transform.position;
+            transform.rotation = socket.transform.rotation;
+            if(m_grabbedBy != null) {
+                m_grabbedBy.ForceRelease(this);
+            }
+            rb.isKinematic = true;
+        }
     } 
 
     private void AllowAttach() {
