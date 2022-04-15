@@ -60,6 +60,10 @@ public class Grabbable : MonoBehaviour
         }
     }
 
+    public void SetBackpack(bool canBackpack) {
+        this.canBackpack = canBackpack;
+    }
+
     public void OnGrab() {
         return;
     }
@@ -94,10 +98,14 @@ public class Grabbable : MonoBehaviour
     }
 
     public void AddThisItem() {
-        im.AddItem(type);
+        if(im != null) {
+            im.AddItem(type);
+        }
     }
 
     public void RemoveThisItem() {
-        im.RemoveItem(type);
+        if(im != null) {
+            im.RemoveItem(type);
+        }
     }
 }

@@ -5,6 +5,6 @@ using UnityEngine;
 public class MainMenuScript : MonoBehaviour
 {
     public void StartGame() {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Scenario 1");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Tutorial");
     }
 }
