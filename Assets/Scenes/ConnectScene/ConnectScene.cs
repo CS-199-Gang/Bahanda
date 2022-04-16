@@ -31,6 +31,7 @@ public class ConnectScene : MonoBehaviour {
             switch (request.responseCode) {
                 case 200:
                     messageText.text = "Device connected.\nStarting game.";
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
                     break;
                 case 404:
                     messageText.text = "Device not registered.";
@@ -66,6 +67,8 @@ public class ConnectScene : MonoBehaviour {
                     GroupCollection groups = matches[0].Groups;
                     string school = groups[1].Value;
                     messageText.text = $"Welcome, {school}";
+                    yield return new WaitForSeconds(5);
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
                     yield return 0;
                     break;
                 case 404:
