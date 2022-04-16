@@ -4367,7 +4367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &723063236
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5110,7 +5110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &948740203
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11896,6 +11896,10 @@ PrefabInstance:
     - target: {fileID: 8413504210607244208, guid: 4dddf4b705a455a4386e36c9c45b2840, type: 3}
       propertyPath: m_Name
       value: NewHouse2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8413504210607244208, guid: 4dddf4b705a455a4386e36c9c45b2840, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8413504210607244215, guid: 4dddf4b705a455a4386e36c9c45b2840, type: 3}
       propertyPath: m_RootOrder
