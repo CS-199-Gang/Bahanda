@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Networking;
 
 
@@ -9,6 +11,9 @@ public class ConnectScene : MonoBehaviour {
 
     string url = "https://bahanda.kimpalao.com/api";
     string id;
+
+    public Text messageText;
+
     void Start() {
         id = SystemInfo.deviceUniqueIdentifier;
         StartCoroutine(Connect());
@@ -18,17 +23,17 @@ public class ConnectScene : MonoBehaviour {
 
         // Check if registered
 
-        Debug.Log("Connecting");
+        messageText.text = "Connecting...";
 
         using (UnityWebRequest request = UnityWebRequest.Get($"{url}/device/{id}")) {
             yield return request.SendWebRequest();
 
             switch (request.responseCode) {
                 case 200:
-                    Debug.Log("Found!");
+                    messageText.text = "Device connected.\nStarting game.";
                     break;
                 case 404:
-                    Debug.Log("Not found. Making Request now.");
+                    messageText.text = "Device not registered.";
                     StartCoroutine(Request());
                     break;
             }
@@ -41,12 +46,10 @@ public class ConnectScene : MonoBehaviour {
             yield return request.SendWebRequest();
 
             if (request.result == UnityWebRequest.Result.Success) {
-                Debug.Log("Registration request sent. Waiting for confirmation");
-                Debug.Log(request.downloadHandler.text);
+                messageText.text += $"\nUse code {request.downloadHandler.text}.";
                 yield return StartCoroutine(WaitForRegistration());
             } else {
-                Debug.Log("An error was encountered");
-                Debug.Log(request.error);
+                messageText.text = $"An error was encountered: {request.error}";
             }
 
         }
@@ -58,7 +61,11 @@ public class ConnectScene : MonoBehaviour {
 
             switch (request.responseCode) {
                 case 200:
-                    Debug.Log("Done!");
+                    Regex rx = new Regex("\"name\":\"([^\"]+)\"");
+                    MatchCollection matches = rx.Matches(request.downloadHandler.text);
+                    GroupCollection groups = matches[0].Groups;
+                    string school = groups[1].Value;
+                    messageText.text = $"Welcome, {school}";
                     yield return 0;
                     break;
                 case 404:
