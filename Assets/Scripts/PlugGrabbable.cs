@@ -9,6 +9,7 @@ public class PlugGrabbable : OVRGrabbable
     [SerializeField]
     Socket attachedSocket;
 
+    private InventoryManager inventoryManager;
     private Socket socket;
     private bool canAttach = true;
     private Rigidbody rb;
@@ -16,6 +17,7 @@ public class PlugGrabbable : OVRGrabbable
     protected override void Start() {
         base.Start();
         rb = GetComponent<Rigidbody>();
+        inventoryManager = FindObjectOfType<InventoryManager>();
         Attach(attachedSocket);
     }
 
@@ -27,6 +29,7 @@ public class PlugGrabbable : OVRGrabbable
             socket = null;
             canAttach = false;
             Invoke("AllowAttach", attachCD);
+            inventoryManager.AddItem("plug");
         }
     }
 
@@ -47,6 +50,9 @@ public class PlugGrabbable : OVRGrabbable
                 m_grabbedBy.ForceRelease(this);
             }
             rb.isKinematic = true;
+            if (inventoryManager != null) {
+                inventoryManager.RemoveItem("plug");
+            }
         }
     } 
 

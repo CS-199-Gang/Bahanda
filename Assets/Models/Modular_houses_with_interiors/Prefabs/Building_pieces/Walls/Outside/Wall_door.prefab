@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1344242641823020421
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8046281635921465496}
+  - component: {fileID: 2834452381054420226}
+  m_Layer: 0
+  m_Name: ClosedDetector
+  m_TagString: ClosedDetector
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8046281635921465496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344242641823020421}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.28, y: -0.951, z: 1.245}
+  m_LocalScale: {x: 0.34744, y: 0.34744, z: 0.34744}
+  m_Children: []
+  m_Father: {fileID: 7284227503766828144}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2834452381054420226
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344242641823020421}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3971886217100086122
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,6 +335,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7132669683215514966, guid: 66bb713b7c7b6ba40b42e5569b392daf, type: 3}
   m_PrefabInstance: {fileID: 8415958923118964465}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7682995209395563927 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2185377640930870118, guid: 66bb713b7c7b6ba40b42e5569b392daf, type: 3}
+  m_PrefabInstance: {fileID: 8415958923118964465}
+  m_PrefabAsset: {fileID: 0}
 --- !u!54 &7036884873983773734
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -343,3 +392,16 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &2162457136700421792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7682995209395563927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2999acfa87843bf40b17be1c33157f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: door
