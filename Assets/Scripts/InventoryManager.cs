@@ -11,8 +11,11 @@ public class InventoryManager : MonoBehaviour
         return inventory;
     }
 
-    void Start() {
-        DontDestroyOnLoad(this);
+    public int GetQuantity(string item) {
+        if (inventory.ContainsKey(item)) {
+            return inventory[item];
+        }
+        return 0;
     }
 
     public void AddItem(string item) {
