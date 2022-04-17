@@ -7,17 +7,17 @@ using UnityEngine.UI;
 public class HandScript : MonoBehaviour
 {
     [SerializeField]
-    bool isLeft;
+    private bool isLeft;
     [SerializeField]
-    bool canTeleport;
+    private bool canTeleport;
     [SerializeField]
-    Transform playerAnchor;
+    private Transform playerAnchor;
     [SerializeField]
-    Transform pointStart;
+    private Transform pointStart;
     [SerializeField]
-    Transform pointEnd;
+    private Transform pointEnd;
     [SerializeField]
-    LayerMask teleportLayerMask;
+    private LayerMask teleportLayerMask;
     
     private LineRenderer lineRenderer;
     private Vector3? teleportPos;
@@ -30,6 +30,10 @@ public class HandScript : MonoBehaviour
         this.touchingBackpack = touchingBackpack;
     }
 
+    public void setCanTeleport(bool canTeleport) {
+        this.canTeleport = canTeleport;
+    }
+
     private void Awake() {
         if (isLeft) {
             lineRenderer = GetComponent<LineRenderer>(); 
@@ -38,18 +42,6 @@ public class HandScript : MonoBehaviour
     }
 
     private void Update() {
-        // Teleporting
-        if (isLeft && canTeleport) {
-            if (Input.GetAxisRaw("L_Horizontal") != 0 || Input.GetAxisRaw("L_Vertical") != 0) {
-                GravCast(transform.position, (pointEnd.position - pointStart.position).normalized, 15, 0.5f);
-            } else {
-                if (teleportPos != null) {
-                    playerAnchor.transform.position = (Vector3) teleportPos;
-                }
-                ClearTeleportLine();
-            }
-        }
-
         // Check if grabbed object
         if (ovrg.grabbedObject != null && currGrabbed == null) {
             currGrabbed = ovrg.grabbedObject.GetComponent<Grabbable>();
@@ -64,6 +56,24 @@ public class HandScript : MonoBehaviour
             }
             currGrabbed.OnRelease(touchingBackpack);
             currGrabbed = null;
+        }
+
+        
+        // Teleporting
+        if (!isLeft) {
+            return;
+        }
+        if (canTeleport) {
+            if (Input.GetAxisRaw("L_Horizontal") != 0 || Input.GetAxisRaw("L_Vertical") != 0) {
+                GravCast(transform.position, (pointEnd.position - pointStart.position).normalized, 15, 0.5f);
+            } else {
+                if (teleportPos != null) {
+                    playerAnchor.transform.position = (Vector3) teleportPos;
+                }
+                ClearTeleportLine();
+            }
+        } else {
+            ClearTeleportLine();
         }
     }
 

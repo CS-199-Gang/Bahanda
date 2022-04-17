@@ -10,7 +10,11 @@ public class GameManager : MonoBehaviour
 
     private void Update() {
         if (OVRInput.GetDown(OVRInput.Button.Four)) {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
+            NextScene();
         }
+    }
+
+    public void NextScene() {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
     }
 }
