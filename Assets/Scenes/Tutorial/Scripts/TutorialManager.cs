@@ -80,7 +80,7 @@ public class TutorialManager : MonoBehaviour
 
     private void Update() {
         if (Vector3.Distance(playerTransform.position, playerStartPos) > 1 && nextObjective == "teleport") {
-            TeleportBack();
+            Invoke("TeleportBack", 5);
             GrabObjective("teleport");
         }
     }
