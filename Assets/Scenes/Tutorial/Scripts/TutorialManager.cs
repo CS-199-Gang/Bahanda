@@ -92,7 +92,7 @@ public class TutorialManager : MonoBehaviour
     }
 
     private void ShowBackpack() {
-        Canvas canvas = FindObjectOfType<Canvas>();
+        Canvas canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>();
         SetObject(1, backpackDiagram, canvas.transform);
 
         TutorialGrabbable[] objs = FindObjectsOfType<TutorialGrabbable>();
@@ -112,6 +112,7 @@ public class TutorialManager : MonoBehaviour
     }
 
     private void TeleportBack() {
+        SetObject(1);
         playerTransform.position = playerStartPos;
         teleportHand.setCanTeleport(false);
     }

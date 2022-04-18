@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c7f9fd47788584438cf37cf9056b1f4, type: 3}
   m_Name: important documents
   m_EditorClassIdentifier: 
-  taskName: Important documents
-  itemRequired: important documents
-  currQuantity: 0
+  taskName: Documents
+  itemRequired: docs
   targetQuantity: 1
-  msgComplete: 
+  unit: 
+  msgComplete: Bringing important documents will prevent it from being damaged to
+    water
   msgIncomplete: 
-  msgZero: 
+  msgZero: Remember to bring your important documents with you
+  sprite: {fileID: 0}
