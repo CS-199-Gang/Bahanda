@@ -18,6 +18,14 @@ public class HandScript : MonoBehaviour
     private Transform pointEnd;
     [SerializeField]
     private LayerMask teleportLayerMask;
+    [SerializeField]
+    private SkinnedMeshRenderer mesh;
+    [SerializeField]
+    private Material dryMat;
+    [SerializeField]
+    private Material wetMat;
+    [SerializeField]
+    private GameObject electricity;
     
     private LineRenderer lineRenderer;
     private Vector3? teleportPos;
@@ -25,6 +33,8 @@ public class HandScript : MonoBehaviour
     private OVRGrabber ovrg;
     private Grabbable currGrabbed;
     private GameObject toDestroy;
+    private ParticleSystem ps;
+    private bool isWet;
 
     public void SetTouchingBackpack(bool touchingBackpack) {
         this.touchingBackpack = touchingBackpack;
@@ -34,11 +44,25 @@ public class HandScript : MonoBehaviour
         this.canTeleport = canTeleport;
     }
 
+    public bool GetIsWet() {
+        return isWet;
+    }
+
+    public void Electrocute() {
+        electricity.SetActive(true);
+        Invoke("CancelElectrocute", 1.5f);
+    }
+
+    private void CancelElectrocute() {
+        electricity.SetActive(false);
+    }
+
     private void Awake() {
         if (isLeft) {
             lineRenderer = GetComponent<LineRenderer>(); 
         }
         ovrg = GetComponent<OVRGrabber>();
+        ps = GetComponent<ParticleSystem>();
     }
 
     private void Update() {
@@ -105,5 +129,25 @@ public class HandScript : MonoBehaviour
     void DrawTeleportLine(List<Vector3> vectors) {
         lineRenderer.positionCount = vectors.Count;
         lineRenderer.SetPositions(vectors.ToArray());
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Flood")) {
+            GetWet();
+        } else if (other.CompareTag("Towel")) {
+            GetDry();
+        }
+    }
+
+    private void GetWet() {
+        ps.Play();
+        mesh.material = wetMat;
+        isWet = true;
+    }
+
+    private void GetDry() {
+        ps.Stop();
+        mesh.material = dryMat;
+        isWet = false;
     }
 }
