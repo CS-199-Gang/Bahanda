@@ -19,8 +19,9 @@ public class UIManager : MonoBehaviour
     private bool willShowText = true;
 
     private void Start() {
-        if (SceneManager.GetActiveScene().name == "Scenario 2") {}
-        willShowText = false;
+        if (SceneManager.GetActiveScene().name == "Scenario 2") {
+            willShowText = false;
+        }
     }
 
 
