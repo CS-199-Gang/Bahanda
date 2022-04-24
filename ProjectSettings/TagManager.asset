@@ -12,6 +12,7 @@ TagManager:
   - ClosedDetector
   - HouseLight
   - Flood
+  - FloodDetector
   layers:
   - Default
   - TransparentFX

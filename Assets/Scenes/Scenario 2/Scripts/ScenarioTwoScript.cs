@@ -32,6 +32,8 @@ public class ScenarioTwoScript : Timer
     private float maxTime = 420;
     private float currTime = 0;
     private float startHeight;
+    private float volumeDiff = 0;
+    private float rainMult = 1;
     private int soundClarity = WINDOWS;
 
     protected override void Start() {
@@ -62,7 +64,7 @@ public class ScenarioTwoScript : Timer
         }
     }
 
-    public void DampenSound(int change) {
+    public void DampenSound(int change = 0) {
         soundClarity += change;
         if (soundClarity > WINDOWS) {
             soundClarity = WINDOWS;
@@ -71,9 +73,17 @@ public class ScenarioTwoScript : Timer
         }
 
         float level = (float) soundClarity / WINDOWS; 
-        float soundLevel = MINRAINVOL + (MAXRAINVOL - MINRAINVOL) * level;
-        float lowPassLevel = MINLOWPASSFREQ + (MAXLOWPASSFREQ - MINLOWPASSFREQ) * level;
+        float soundLevel = MINRAINVOL + (MAXRAINVOL - MINRAINVOL) * level + volumeDiff;
+        float lowPassLevel = (MINLOWPASSFREQ + (MAXLOWPASSFREQ - MINLOWPASSFREQ) * level) * rainMult;
         audioMixer.SetFloat("RainVolume", soundLevel);
         audioMixer.SetFloat("RainLowPass", lowPassLevel); 
+    }
+    
+    public void AddMult(float mult) {
+        rainMult *= mult;
+    }
+
+    public void AddVol(float diff) {
+        volumeDiff += diff;
     }
 }
