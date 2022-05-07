@@ -19,6 +19,10 @@ public class Settings : MonoBehaviour {
     private bool isRefreshing = false;
 
     void Start() {
+
+        scenario1Time = PlayerPrefs.GetInt("scenario1Time");
+        scenario2Time = PlayerPrefs.GetInt("scenario2Time");
+        FormatTime();
         id = SystemInfo.deviceUniqueIdentifier;
         Debug.Log(id);
     }
@@ -53,6 +57,9 @@ public class Settings : MonoBehaviour {
                     JSONNode json = JSON.Parse(request.downloadHandler.text);
                     scenario1Time = json["data"]["scenario_one_time"];
                     scenario2Time = json["data"]["scenario_two_time"];
+                    PlayerPrefs.SetInt("scenario1Time", scenario1Time);
+                    PlayerPrefs.SetInt("scenario2Time", scenario2Time);
+                    PlayerPrefs.Save();
                     FormatTime();
                     break;
                 case 404:
