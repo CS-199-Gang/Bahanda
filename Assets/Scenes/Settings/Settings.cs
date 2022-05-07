@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 using OVRSimpleJSON;
 
@@ -19,12 +20,10 @@ public class Settings : MonoBehaviour {
     private bool isRefreshing = false;
 
     void Start() {
-
         scenario1Time = PlayerPrefs.GetInt("scenario1Time");
         scenario2Time = PlayerPrefs.GetInt("scenario2Time");
         FormatTime();
         id = SystemInfo.deviceUniqueIdentifier;
-        Debug.Log(id);
     }
 
     // Update is called once per frame
@@ -33,6 +32,8 @@ public class Settings : MonoBehaviour {
             isRefreshing = true;
             Debug.Log("Refreshing...");
             StartCoroutine(Refresh());
+        } else if (OVRInput.GetDown(OVRInput.Button.Two)) {
+            SceneManager.LoadScene("Main Menu");
         }
     }
 
