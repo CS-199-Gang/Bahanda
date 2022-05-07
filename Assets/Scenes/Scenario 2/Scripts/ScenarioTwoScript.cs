@@ -4,16 +4,15 @@ using UnityEngine;
 using UnityEngine.Audio;
 using DigitalRuby.RainMaker;
 
-public class ScenarioTwoScript : MonoBehaviour
-{    
-    const float FLOODRISESTART = 1f/4f;
-    const float FLOODRISEEND = 3f/4f;
+public class ScenarioTwoScript : MonoBehaviour {
+    const float FLOODRISESTART = 1f / 4f;
+    const float FLOODRISEEND = 3f / 4f;
     const float RAININTENSITYSTART = 0;
-    const float RAININTENSITYEND = 5f/8f;
+    const float RAININTENSITYEND = 5f / 8f;
     const float MAXRAINVOL = 0;
     const float MINRAINVOL = -20;
     const float MAXLOWPASSFREQ = 22000;
-    const float MINLOWPASSFREQ = 1300; 
+    const float MINLOWPASSFREQ = 1300;
     const int WINDOWS = 15;
 
     [SerializeField]
@@ -35,6 +34,7 @@ public class ScenarioTwoScript : MonoBehaviour
     private int soundClarity = WINDOWS;
 
     void Start() {
+        maxTime = PlayerPrefs.GetInt("scenario2Time", (int)maxTime);
         startHeight = floodTransform.position.y;
         rainScript.RainIntensity = startIntensity;
     }
