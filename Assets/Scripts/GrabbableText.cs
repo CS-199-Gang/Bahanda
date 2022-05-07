@@ -23,7 +23,7 @@ public class GrabbableText : MonoBehaviour
 
     private void Update() {
         transform.position = grabbable.transform.position + (Vector3.up * heightOffset); 
-        transform.LookAt(gameManager.mainCamera.transform);
+        transform.LookAt(GameObject.FindGameObjectWithTag("MainCamera").transform);
         rt.sizeDelta = text.rectTransform.sizeDelta + Vector2.one * padding;
     }
 

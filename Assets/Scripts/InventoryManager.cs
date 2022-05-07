@@ -11,8 +11,11 @@ public class InventoryManager : MonoBehaviour
         return inventory;
     }
 
-    void Start() {
-        DontDestroyOnLoad(this);
+    public int GetQuantity(string item) {
+        if (inventory.ContainsKey(item)) {
+            return inventory[item];
+        }
+        return 0;
     }
 
     public void AddItem(string item) {
@@ -26,7 +29,9 @@ public class InventoryManager : MonoBehaviour
 
     public void RemoveItem(string item) {
         if (inventory.ContainsKey(item)) {
-            inventory[item] -= 1;
+            if (inventory[item] > 0) {
+                inventory[item] -= 1;
+            }
         }
         else {
             inventory.Add(item, 0);

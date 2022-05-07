@@ -1,5 +1,23 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!244 &-5481011695463164240
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 3a9aad7af971e3344866f2a35f6943f3
+  m_EffectName: Lowpass
+  m_MixLevel: ae701fa1c183bde499176c85edb2170a
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: 8e4af9794e15a714fa7ea1fec17bc323
+  - m_ParameterName: Resonance
+    m_GUID: 0974e6090e78cdb45b090f6c39f0218f
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -16,10 +34,15 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: ebf1a66308f5e6843b4eac1cc60ddbe9
+    name: RainVolume
+  - guid: 8e4af9794e15a714fa7ea1fec17bc323
+    name: RainLowPass
   m_AudioMixerGroupViews:
   - guids:
     - 725e77d6ee2433b4388bc90340f64b61
+    - 41ea1180ffd118b4e89ac87b38f9ded1
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500003}
@@ -32,7 +55,8 @@ AudioMixerGroupController:
   m_Name: Master
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 725e77d6ee2433b4388bc90340f64b61
-  m_Children: []
+  m_Children:
+  - {fileID: 8576682956459550642}
   m_Volume: 0658889d5c88bf940b82d78b8d39562e
   m_Pitch: 0d4bed6fb113d6f4089b817171a98447
   m_Send: 00000000000000000000000000000000
@@ -133,6 +157,7 @@ AudioMixerSnapshotController:
     f00e9382c178ba74091552a02191a248: 0.5
     58edbc339fee35e4396568ee4b4453de: 0.92
     ccd919438ea41b84a8839e71f708afbb: 0.336
+    ebf1a66308f5e6843b4eac1cc60ddbe9: 0
     0a3224836f36e1a40a4ede80f5080595: 1
     d65515935f752c649a20a13490f2f9e0: 0
     03939eb341cc86440a3b7f811113cd27: 0.385
@@ -168,11 +193,13 @@ AudioMixerSnapshotController:
     bf51ba384a3c1f646a631feb6aed6c54: 114
     0f0fba6804dba4c4cb19fd30e1223afb: 2.87
     f4fa4509dbcb99d46a3b47fb214a8e04: 1
+    0974e6090e78cdb45b090f6c39f0218f: 1
     56c841194b2fe3040b48cf98706d6e73: 0
     7413dd197ffb07340850468b31fcf1e0: 0.79
     36b1ac29e76462c4586c397a65308888: 0.5
     0417fc59ebc9a8546aeb76cabfc63779: 144
     d06ca37942b78cc4bb681d13d04fd13f: 0
+    8e4af9794e15a714fa7ea1fec17bc323: 22000
     b8c78c79da9dc7647b11bfb614405d3a: 119
     a7822f794e8835b44b5d97b299e90829: 0.5
     528077a94b0c9414ebb8e893ec848cb5: 3.55
@@ -214,7 +241,7 @@ AudioMixerSnapshotController:
     7812eb7d1a7bba747868c3abff847dac: 0.538
     983c698dea217524c994e7b88f25df7d: 1
     ea47e49d533c4a149a56cf186a4119eb: 110
-    0658889d5c88bf940b82d78b8d39562e: 0
+    0658889d5c88bf940b82d78b8d39562e: -4
     285a82bdfd80bae41b75462603f13baf: 0
     72def6bd2a38a944ead357650153b6b3: 0.441
     da2a1bdd1018dc54ebb2bf2349fbd8c8: 0.07
@@ -372,3 +399,37 @@ AudioMixerSnapshotController:
     0d4bed6fb113d6f4089b817171a98447: 1
     d90c93cfc45013545b3760e70f40dd9c: 0.65
   m_TransitionOverrides: {}
+--- !u!244 &7582704853182294345
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 1ca6275bb41a6464a9a1fc9181cb5078
+  m_EffectName: Attenuation
+  m_MixLevel: 070ee4c3a29be8a43821f1679bbd805c
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &8576682956459550642
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Rain
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 41ea1180ffd118b4e89ac87b38f9ded1
+  m_Children: []
+  m_Volume: ebf1a66308f5e6843b4eac1cc60ddbe9
+  m_Pitch: b3b1a3e7c21fce0448ba3b8e708c45c9
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 7582704853182294345}
+  - {fileID: -5481011695463164240}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
