@@ -9,9 +9,4 @@ public class MainMenuScript : MonoBehaviour
     public void StartGame() {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Tutorial");
     }
-
-    public void OpenSettings() {
-        SceneManager.LoadScene("Settings");
-    }
-
 }
