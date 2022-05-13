@@ -33,7 +33,7 @@ public class Settings : MonoBehaviour {
             Debug.Log("Refreshing...");
             StartCoroutine(Refresh());
         } else if (OVRInput.GetDown(OVRInput.Button.Two)) {
-            SceneManager.LoadScene("Main Menu");
+            SceneManager.LoadScene("Start Screen");
         }
     }
 
