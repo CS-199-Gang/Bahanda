@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskName: Battery
   itemRequired: battery
-  currQuantity: 0
   targetQuantity: 2
-  msgComplete: 
-  msgIncomplete: 
-  msgZero: 
+  unit: 
+  msgComplete: You have enough spare batteries
+  msgIncomplete: Some more spare batteries will be useful
+  msgZero: Some spare batteries will be useful
+  sprite: {fileID: 0}

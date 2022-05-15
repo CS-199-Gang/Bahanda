@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.Audio;
 using DigitalRuby.RainMaker;
 
-public class ScenarioTwoScript : MonoBehaviour {
-    const float FLOODRISESTART = 1f / 4f;
-    const float FLOODRISEEND = 3f / 4f;
+public class ScenarioTwoScript : Timer
+{    
+    const float FLOODRISESTART = 1f/4f;
+    const float FLOODRISEEND = 3f/4f;
     const float RAININTENSITYSTART = 0;
     const float RAININTENSITYEND = 5f / 8f;
     const float MAXRAINVOL = 0;
@@ -33,13 +34,16 @@ public class ScenarioTwoScript : MonoBehaviour {
     private float startHeight;
     private int soundClarity = WINDOWS;
 
-    void Start() {
+    protected override void Start() {
+        base.Start();
         maxTime = PlayerPrefs.GetInt("scenario2Time", (int)maxTime);
         startHeight = floodTransform.position.y;
         rainScript.RainIntensity = startIntensity;
     }
 
-    void Update() {
+    protected override void Update() {
+        base.Update();
+        
         // Increment time
         currTime += Time.deltaTime;
         float progress = currTime / maxTime;

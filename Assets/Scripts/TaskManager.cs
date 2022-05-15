@@ -13,12 +13,19 @@ public class TaskManager : MonoBehaviour
         return tasks;
     }
 
-    void Awake() {
-        inventoryManager = FindObjectOfType<InventoryManager>();
+    public bool IsTask(string item, out string taskName) {
+        foreach(Task t in tasks) {
+            if (t.itemRequired == item) {
+                taskName = t.taskName;
+                return true;
+            }
+        }
+        taskName = "";
+        return false;
     }
 
-    void Start() {
-        DontDestroyOnLoad(this);
+    void Awake() {
+        inventoryManager = FindObjectOfType<InventoryManager>();
     }
 
     string GetTaskFeedback(Task task) {

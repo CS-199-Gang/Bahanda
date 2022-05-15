@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: first aid
   m_EditorClassIdentifier: 
   taskName: First aid
-  itemRequired: First aid
-  currQuantity: 0
+  itemRequired: firstaid
   targetQuantity: 1
+  unit: 
   msgComplete: The first aid you got will help in emergencies.
   msgIncomplete: 
   msgZero: Some first aid would be very helpful.
+  sprite: {fileID: 0}

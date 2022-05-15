@@ -619,6 +619,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1846331369, guid: 1d3c43a397df2c74cb3c372ce40e70ab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1294918344959259102, guid: 1d3c43a397df2c74cb3c372ce40e70ab, type: 3}
       propertyPath: m_Name
       value: Player
@@ -946,7 +950,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Before the Typhoon
+  m_Text: During the Typhoon
 --- !u!222 &1982251427
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -39,7 +39,7 @@ public class PowerSwitchScript : MonoBehaviour
         grabbable.RemoveThisItem();
 
         foreach (Light l in houseLights) {
-            l.intensity *= 5f;
+            l.intensity *= 8f;
         }
     }
 
@@ -49,7 +49,7 @@ public class PowerSwitchScript : MonoBehaviour
         grabbable.AddThisItem();
 
         foreach (Light l in houseLights) {
-            l.intensity /= 5f;
+            l.intensity /= 8f;
         }
     }
 }
