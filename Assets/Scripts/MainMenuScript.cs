@@ -9,4 +9,12 @@ public class MainMenuScript : MonoBehaviour
     public void StartGame() {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Tutorial");
     }
+
+    public void SetName(string value) {
+        PlayerPrefs.SetString("name", value);
+    }
+
+    public void SetStudentNumber(string value) {
+        PlayerPrefs.SetString("number", value);
+    }
 }

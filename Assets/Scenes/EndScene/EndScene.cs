@@ -51,15 +51,26 @@ public class EndScene : MonoBehaviour {
 
         Debug.Log("Uploading Score");
 
-        string name = "John Smith";
-        string number = "2018012345";
+        string name = PlayerPrefs.GetString("name");
+        string number = PlayerPrefs.GetString("number");
 
-        int water = 1;
-        int food = 2;
-        int matchsticks = 1;
-        int first_aid_kit = 1;
-        int flashlight = 1;
-        string tasks = $"{{ \"water\": {water}, \"food\": {food}, \"matchsticks\": {matchsticks}, \"first_aid_kit\": {first_aid_kit}, \"flashlight\": {flashlight} }}";
+        // Scenario One
+        int battery = inventory.ContainsKey("battery") ? inventory["battery"] : 0;
+        int food = inventory.ContainsKey("food") ? inventory["food"] : 0;
+        int matchsticks = inventory.ContainsKey("matchsticks") ? inventory["matchsticks"] : 0;
+        int firstaid = inventory.ContainsKey("firstaid") ? inventory["firstaid"] : 0;
+        int flashlight = inventory.ContainsKey("flashlight") ? inventory["flashlight"] : 0;
+        int docs = inventory.ContainsKey("docs") ? inventory["docs"] : 0;
+        int medicine = inventory.ContainsKey("medicine") ? inventory["medicine"] : 0;
+        int water = inventory.ContainsKey("water") ? inventory["water"] : 0;
+
+        // Scenario Two
+        int door = inventory.ContainsKey("door") ? inventory["door"] : 0;
+        int window = inventory.ContainsKey("window") ? inventory["window"] : 0;
+        int plug = inventory.ContainsKey("plug") ? inventory["plug"] : 0;
+        int power = inventory.ContainsKey("power") ? inventory["power"] : 0;
+
+        string tasks = $"{{ \"water\": {water}, \"food\": {food}, \"matchsticks\": {matchsticks}, \"first_aid_kit\": {firstaid}, \"flashlight\": {flashlight}, \"docs\": {docs}, \"battery\": {battery}, \"medicine\": {medicine}, \"door\": {door}, \"plug\": {plug}, \"power\": {power}, \"window\": {window} }}";
 
         string data = $"{{ \"name\": \"{name}\", \"student_number\": \"{number}\", \"device_id\": \"{id}\", \"tasks\": {tasks} }}";
 
