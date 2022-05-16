@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskName: Medicine
   itemRequired: medicine
-  currQuantity: 0
   targetQuantity: 1
-  msgComplete: 
+  unit: 
+  msgComplete: Bringing your medications will help you avoid missing them
   msgIncomplete: 
-  msgZero: 
+  msgZero: Don't forget to bring any medications you're taking
+  sprite: {fileID: 0}

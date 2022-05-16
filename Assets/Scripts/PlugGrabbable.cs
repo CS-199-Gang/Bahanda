@@ -18,7 +18,7 @@ public class PlugGrabbable : OVRGrabbable
         base.Start();
         rb = GetComponent<Rigidbody>();
         inventoryManager = FindObjectOfType<InventoryManager>();
-        Attach(attachedSocket);
+        Attach(attachedSocket, true);
     }
 
     public override void GrabBegin(OVRGrabber hand, Collider grabPoint) {
@@ -40,7 +40,7 @@ public class PlugGrabbable : OVRGrabbable
         }    
     }
 
-    private void Attach(Socket socket) {
+    private void Attach(Socket socket, bool isStartAttatch = false) {
         if (!socket.IsOccupied()) {
             socket.Occupy(this);
             this.socket = socket;
@@ -50,7 +50,7 @@ public class PlugGrabbable : OVRGrabbable
                 m_grabbedBy.ForceRelease(this);
             }
             rb.isKinematic = true;
-            if (inventoryManager != null) {
+            if (inventoryManager != null && !isStartAttatch) {
                 inventoryManager.RemoveItem("plug");
             }
         }
