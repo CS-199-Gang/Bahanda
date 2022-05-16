@@ -26,6 +26,8 @@ public class HandScript : MonoBehaviour
     private Material wetMat;
     [SerializeField]
     private GameObject electricity;
+    [SerializeField]
+    private Transform wetParticles;
     
     private LineRenderer lineRenderer;
     private Vector3? teleportPos;
@@ -62,7 +64,9 @@ public class HandScript : MonoBehaviour
             lineRenderer = GetComponent<LineRenderer>(); 
         }
         ovrg = GetComponent<OVRGrabber>();
-        ps = GetComponent<ParticleSystem>();
+        if (wetParticles != null) {
+            ps = wetParticles.GetComponent<ParticleSystem>();
+        }
     }
 
     private void Update() {

@@ -22,13 +22,16 @@ public class PlugGrabbable : OVRGrabbable
     }
 
     public override void GrabBegin(OVRGrabber hand, Collider grabPoint) {
-        if (hand.GetComponent<HandScript>().GetIsWet()) {
-            inventoryManager.AddItem("TouchedWet");
+        base.GrabBegin(hand, grabPoint);
+
+        bool isOn = FindObjectOfType<PowerSwitchScript>().GetOn();
+
+        if (socket != null && hand.GetComponent<HandScript>().GetIsWet() && isOn) {
+            inventoryManager.AddItem("touchedWet");
             hand.GetComponent<HandScript>().Electrocute();
+            hand.ForceRelease(this);
             return;
         }
-
-        base.GrabBegin(hand, grabPoint);
 
         if (socket != null) {
             socket.Release();

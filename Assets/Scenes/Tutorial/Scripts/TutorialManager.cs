@@ -13,6 +13,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField]
     private GameObject backpackDiagram;
     [SerializeField]
+    private GameObject inventoryModel;
+    [SerializeField]
     private GameObject lookModel;
     [SerializeField]
     private GameObject moveModel;
@@ -29,6 +31,7 @@ public class TutorialManager : MonoBehaviour
     private string nextObjective;
     private GameObject[] objects = new GameObject[2];
     private DialogueManager dialogueManager;
+    private InventoryUIManager iuiManager;
 
     public void SetObjective(string type) {
         nextObjective = type;
@@ -52,6 +55,9 @@ public class TutorialManager : MonoBehaviour
             case "backpack":
                 ShowBackpack();
                 break;
+            case "inventory":
+                ShowInventory();
+                break;
             case "turn":
                 ShowLook();
                 break;
@@ -72,10 +78,12 @@ public class TutorialManager : MonoBehaviour
     private void Awake() {
         dialogueManager = FindObjectOfType<DialogueManager>();
         playerStartPos = playerTransform.position;
+        iuiManager = FindObjectOfType<InventoryUIManager>();
     }
 
     private void Start() { 
         dialogueManager.StartDialogue(tutorialDialogue);
+        iuiManager.setCanIventory(false);
     }
 
     private void Update() {
@@ -99,6 +107,12 @@ public class TutorialManager : MonoBehaviour
         foreach(TutorialGrabbable obj in objs) {
             obj.GetComponent<Grabbable>().SetBackpack(true);
         }
+    }
+
+    private void ShowInventory () {
+        SetObject(0);
+        SetObject(1, inventoryModel);
+        iuiManager.setCanIventory(true);
     }
 
     private void ShowLook() {

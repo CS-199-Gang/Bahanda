@@ -16,8 +16,10 @@ MonoBehaviour:
   itemRequired: docs
   targetQuantity: 1
   unit: 
+  isNeeded: 1
+  dontShowNumber: 0
   msgComplete: Bringing important documents will prevent it from being damaged to
     water
   msgIncomplete: 
   msgZero: Remember to bring your important documents with you
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 38f6b29f8e0336e4992e9f8f6a3f171f, type: 3}

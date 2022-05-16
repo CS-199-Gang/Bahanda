@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(OVRGrabbable))]
 public class Grabbable : MonoBehaviour
 {
     public string type;
 
     [SerializeField]
     private string description;
+    [SerializeField]
+    private int quantity = 1;
     [SerializeField]
     private GameObject grabbableTextGO;
     [SerializeField]
@@ -99,7 +100,7 @@ public class Grabbable : MonoBehaviour
 
     public void AddThisItem() {
         if(im != null) {
-            im.AddItem(type);
+            im.AddItem(type, quantity, description);
         }
     }
 

@@ -16,7 +16,9 @@ MonoBehaviour:
   itemRequired: medicine
   targetQuantity: 1
   unit: 
+  isNeeded: 1
+  dontShowNumber: 0
   msgComplete: Bringing your medications will help you avoid missing them
   msgIncomplete: 
   msgZero: Don't forget to bring any medications you're taking
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 62355aa5c609b224aa66cb1a8b642140, type: 3}

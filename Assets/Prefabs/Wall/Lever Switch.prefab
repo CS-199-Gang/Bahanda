@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5437886146322049853}
   - component: {fileID: 5437886146322049842}
   - component: {fileID: 5437886146322049843}
-  - component: {fileID: 5437886146322049840}
   - component: {fileID: 5437886146322049841}
   m_Layer: 6
   m_Name: Grabbable
@@ -65,6 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: power
   description: Power Switch
+  quantity: 1
   grabbableTextGO: {fileID: 1922327936099548127, guid: 00ab9b31d71f0bc47a24646847b2d987, type: 3}
   canBackpack: 0
   hasOutline: 1
@@ -84,26 +84,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.005, y: 0.01, z: 0.005}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5437886146322049840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5437886146322049847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 612dc1f1b0011be49985436a8de23dbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_allowOffhandGrab: 1
-  m_snapPosition: 0
-  m_snapOrientation: 0
-  m_snapOffset: {fileID: 0}
-  m_grabPoints: []
-  objectRB: {fileID: 5437886147088968579}
-  handle: {fileID: 5437886147035942614}
-  speed: 25
 --- !u!114 &5437886146322049841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,6 +96,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 799ae42b32603c94fb9eb4f57299b558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_allowOffhandGrab: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
+  m_snapOffset: {fileID: 0}
+  m_grabPoints: []
+  objectRB: {fileID: 5437886147088968579}
+  handle: {fileID: 5437886147035942614}
+  speed: 15
   mainObject: {fileID: 5437886147088968581}
   midPointRotation: 0.5
   indicator: {fileID: 5437886147498593696}
@@ -593,7 +581,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.031513214, a: 1}
   m_Intensity: 3
   m_Range: 0.15
   m_SpotAngle: 30

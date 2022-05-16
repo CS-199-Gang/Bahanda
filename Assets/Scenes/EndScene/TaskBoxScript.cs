@@ -18,32 +18,52 @@ public class TaskBoxScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private GameObject hoverBox;
     [SerializeField]
     private Transform hoverBoxPos;
+    private bool hasHoverBox;
     private Task task;
 
     public void SetItems(Task task, int currQuantity) {
         this.task = task;
         title.text = task.taskName;
         image.sprite = task.sprite;
-        quantity.text = currQuantity + "/" + task.targetQuantity + " " + task.unit;
-        if (currQuantity >= task.targetQuantity) {
-            quantity.color = Color.green;
-            hoverText.text = task.msgComplete;
-        } else if (currQuantity == 0) {
-            quantity.color = Color.red;
-            hoverText.text = task.msgZero;
+        if (task.isNeeded)  {
+            quantity.text = currQuantity + "/" + task.targetQuantity + " " + task.unit;
+            hasHoverBox = true;
+            if (currQuantity >= task.targetQuantity) {
+                quantity.color = Color.green;
+                hoverText.text = task.msgComplete;
+            } else if (currQuantity == 0) {
+                quantity.color = Color.red;
+                hoverText.text = task.msgZero;
+            } else {
+                quantity.color = Color.yellow;
+                hoverText.text = task.msgIncomplete;
+            }
         } else {
-            quantity.color = Color.yellow;
-            hoverText.text = task.msgIncomplete;
+            quantity.text = currQuantity.ToString() + task.unit;
+            hoverText.text = task.msgComplete;
+            hasHoverBox = task.msgComplete != "";
         }
     }
 
+    public void SetInventoryItem(Task task, int currQuantity) {
+        this.task = task;
+        title.text = task.taskName;
+        image.sprite = task.sprite;
+        quantity.text = currQuantity + task.unit;
+        hasHoverBox = false;
+    }
+
     public void OnPointerEnter(PointerEventData eventData) {
-        hoverBox.transform.position = hoverBoxPos.position;
-        hoverBox.SetActive(true);
+        if (hasHoverBox) {
+            hoverBox.transform.position = hoverBoxPos.position;
+            hoverBox.SetActive(true);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData) {
-        hoverBox.SetActive(false);
+        if (hasHoverBox) {
+            hoverBox.SetActive(false);
+        }
     }
 
     public Transform GetHoverBoxTransform() {

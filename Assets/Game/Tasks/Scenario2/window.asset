@@ -16,7 +16,9 @@ MonoBehaviour:
   itemRequired: window
   targetQuantity: 12
   unit: 
+  isNeeded: 1
+  dontShowNumber: 0
   msgComplete: You have closed all windows
   msgIncomplete: There are still some windows that are left open
   msgZero: You forgot to close any windows
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 2d94c676da88e8d4d8aecde4970058ec, type: 3}

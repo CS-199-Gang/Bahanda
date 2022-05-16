@@ -16,7 +16,9 @@ MonoBehaviour:
   itemRequired: food
   targetQuantity: 9
   unit: '  meals'
+  isNeeded: 1
+  dontShowNumber: 0
   msgComplete: You've collected enough food.
   msgIncomplete: It is recommended to have 3 meals worth of food per day.
   msgZero: You have not collected any food.
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 1b93fbc3a359a5b438e67002cbdc05b3, type: 3}

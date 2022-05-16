@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskName: Matchsticks
   itemRequired: matchsticks
-  currQuantity: 0
   targetQuantity: 1
+  unit: 
+  isNeeded: 1
+  dontShowNumber: 0
   msgComplete: The matchsticks you got will help if you need to start a fire.
   msgIncomplete: Some matchsticks would help in case you need to start a fire.
   msgZero: Some matchsticks would help in case you need to start a fire.
+  sprite: {fileID: 21300000, guid: 2bd474207982e6f45a1895822eb01fba, type: 3}

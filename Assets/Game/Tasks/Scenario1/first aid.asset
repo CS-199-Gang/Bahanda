@@ -16,7 +16,9 @@ MonoBehaviour:
   itemRequired: firstaid
   targetQuantity: 1
   unit: 
+  isNeeded: 1
+  dontShowNumber: 0
   msgComplete: The first aid you got will help in emergencies.
   msgIncomplete: 
   msgZero: Some first aid would be very helpful.
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 547bbd0398a6aba45a6ba56e47a10fb1, type: 3}

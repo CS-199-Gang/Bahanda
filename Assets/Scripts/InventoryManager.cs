@@ -5,9 +5,9 @@ using UnityEngine;
 /// Class for the Inventory system
 public class InventoryManager : MonoBehaviour
 {
-    Dictionary<string, int> inventory = new Dictionary<string, int>();
+    protected Dictionary<string, int> inventory = new Dictionary<string, int>();
     private UIManager uiManager;
-    private TaskManager taskManager;
+    protected TaskManager taskManager;
 
     public Dictionary<string, int> GetInventory() {
         return inventory;
@@ -20,20 +20,30 @@ public class InventoryManager : MonoBehaviour
         return 0;
     }
 
-    public void AddItem(string item) {
+    public virtual void AddItem(string item) {
         if (inventory.ContainsKey(item)) {
             inventory[item] += 1;
         }
         else {
             inventory.Add(item, 1);
         }
-        string taskName;
-        if (taskManager.IsTask(item, out taskName)) {
+        if (taskManager.IsTask(item, out string taskName)) {
             uiManager.DisplayItem(taskName, true);
         }
     }
 
-    public void RemoveItem(string item) {
+    
+    public virtual void AddItem(string item, int quantity, string name) {
+        if (inventory.ContainsKey(item)) {
+            inventory[item] += quantity;
+        }
+        else {
+            inventory.Add(item, quantity);
+        }
+        uiManager.DisplayItem(name, true);
+    }
+
+    public virtual void RemoveItem(string item) {
         if (inventory.ContainsKey(item)) {
             if (inventory[item] <= 0) {
                 return;
@@ -49,7 +59,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    private void Awake() {
+    protected virtual void Awake() {
         uiManager = FindObjectOfType<UIManager>();
         taskManager = FindObjectOfType<TaskManager>();
     }
