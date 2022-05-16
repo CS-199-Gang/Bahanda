@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskName: Plugs
   itemRequired: plug
-  targetQuantity: 3
+  targetQuantity: 5
   unit: 
+  isNeeded: 1
+  dontShowNumber: 0
   msgComplete: You have unplugged all your appliances
   msgIncomplete: Some appliances are not unplugged
   msgZero: Unplugging appliances will help avoid electrical damage
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: bcf1c339c2d972b47badc27829ab0452, type: 3}

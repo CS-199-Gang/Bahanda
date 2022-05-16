@@ -16,7 +16,9 @@ MonoBehaviour:
   itemRequired: battery
   targetQuantity: 2
   unit: 
+  isNeeded: 1
+  dontShowNumber: 0
   msgComplete: You have enough spare batteries
   msgIncomplete: Some more spare batteries will be useful
   msgZero: Some spare batteries will be useful
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: c08a6ad34d2a1634896c600e5b3fccaa, type: 3}

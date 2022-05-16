@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5c59b3da63292346a44465ed43716aa, type: 3}
   m_Name: TutorialDialogue5
   m_EditorClassIdentifier: 
-  next: {fileID: 11400000, guid: fcb118d9be14b7c499235dc661a0cadb, type: 2}
+  next: {fileID: 11400000, guid: 564f6d72eeac16741b028fce10f121b6, type: 2}
   message:
   - To store the items in your survival kit, place the item on your back and then
     release. Try it now!

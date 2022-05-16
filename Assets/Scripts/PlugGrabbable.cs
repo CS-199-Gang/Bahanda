@@ -24,6 +24,15 @@ public class PlugGrabbable : OVRGrabbable
     public override void GrabBegin(OVRGrabber hand, Collider grabPoint) {
         base.GrabBegin(hand, grabPoint);
 
+        bool isOn = FindObjectOfType<PowerSwitchScript>().GetOn();
+
+        if (socket != null && hand.GetComponent<HandScript>().GetIsWet() && isOn) {
+            inventoryManager.AddItem("touchedWet");
+            hand.GetComponent<HandScript>().Electrocute();
+            hand.ForceRelease(this);
+            return;
+        }
+
         if (socket != null) {
             socket.Release();
             socket = null;

@@ -16,7 +16,9 @@ MonoBehaviour:
   itemRequired: door
   targetQuantity: 3
   unit: 
+  isNeeded: 1
+  dontShowNumber: 0
   msgComplete: You have closed all doors
   msgIncomplete: There are still some doors that are left open
   msgZero: You forgot to close any doors
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 6214872fe77ac154d8eac54b632e69ce, type: 3}

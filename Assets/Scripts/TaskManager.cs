@@ -13,6 +13,15 @@ public class TaskManager : MonoBehaviour
         return tasks;
     }
 
+    public Task findTask(string item) {
+        foreach(Task t in tasks) {
+            if (t.itemRequired == item) {
+                return t;
+            }
+        }
+        return null;
+    }
+
     public bool IsTask(string item, out string taskName) {
         foreach(Task t in tasks) {
             if (t.itemRequired == item) {

@@ -16,7 +16,9 @@ MonoBehaviour:
   itemRequired: power
   targetQuantity: 1
   unit: 
+  isNeeded: 1
+  dontShowNumber: 0
   msgComplete: Turning off the power supply prevents electrical accidents
   msgIncomplete: 
   msgZero: The power in your house was left turned on despite flooding
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 087e17482b45c1648b3916edd952d682, type: 3}

@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskName: Flashlight
   itemRequired: flashlight
-  currQuantity: 0
   targetQuantity: 1
+  unit: 
+  isNeeded: 1
+  dontShowNumber: 0
   msgComplete: You have a flashlight for when power goes out.
   msgIncomplete: A flashlight would help in case the power goes out.
   msgZero: A flashlight would help in case the power goes out.
+  sprite: {fileID: 21300000, guid: 17ec28e68a68d954188f72b0e2308f64, type: 3}

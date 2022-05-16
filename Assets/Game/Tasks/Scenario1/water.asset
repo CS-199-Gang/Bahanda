@@ -16,7 +16,9 @@ MonoBehaviour:
   itemRequired: water
   targetQuantity: 12
   unit: L
+  isNeeded: 1
+  dontShowNumber: 0
   msgComplete: You got enough water.
   msgIncomplete: It is recommended to have 4L per person per day.
   msgZero: You will need to prepare clean drinking water.
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 49ccc19e9af6b094d9bbc182e50c85ed, type: 3}

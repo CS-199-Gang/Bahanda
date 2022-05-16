@@ -15,9 +15,9 @@ MonoBehaviour:
   next: {fileID: 11400000, guid: 809264608d77b7e49a5a03fe1bf64f0d, type: 2}
   message:
   - That's it! You are now ready to start your training!
-  - You will have show what to do before the typhoon as best as you can before the
+  - You will have to collect items for your Go Bag before the typhoon before the
     time runs out.
   - Afterwards, the typhoon will arrive and your house will start flooding.
-  - There, you will have to show what to do during a typhoon.
+  - There, you will have to show what to do to stay safe during a typhoon.
   startFunction: teleportBack
   objective: 
