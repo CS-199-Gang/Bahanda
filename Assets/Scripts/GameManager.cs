@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     const int LASTSCENE = 6;
-    const int FIRSTSCENETIME = 300;
-    const int SECONDSCENETIME = 300;
+    int FIRSTSCENETIME = 300;
+    int SECONDSCENETIME = 300;
     private Dictionary<string, int> inventory;
     private List<Task> tasks;
 
@@ -26,6 +26,11 @@ public class GameManager : MonoBehaviour
     
     private void Start() {
         DontDestroyOnLoad(this);
+
+        // Get times from preference
+        FIRSTSCENETIME = PlayerPrefs.GetInt("scenario1Time", (int)FIRSTSCENETIME);
+        SECONDSCENETIME = PlayerPrefs.GetInt("scenario1Time", (int)SECONDSCENETIME);
+
     }
 
     // private void Update() {
