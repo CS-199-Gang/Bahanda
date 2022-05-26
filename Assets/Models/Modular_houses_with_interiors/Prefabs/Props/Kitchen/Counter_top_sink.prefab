@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 460468086}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2352638, y: 2.4113, z: 2.4113}
   m_Children: []
   m_Father: {fileID: 1747796294}
   m_RootOrder: 0
@@ -64,6 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 
   description: 
+  quantity: 1
   grabbableTextGO: {fileID: 0}
   canBackpack: 0
   hasOutline: 0
@@ -81,8 +82,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.005, y: 0.01, z: 0.005}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.012918136, y: 0.01, z: 0.005}
+  m_Center: {x: -0.0039590686, y: 0, z: -9.314672e-18}
 --- !u!114 &460468088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +211,7 @@ Transform:
   m_GameObject: {fileID: 1218096564}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2352638, y: 2.4113, z: 2.4113}
   m_Children: []
   m_Father: {fileID: 897022555}
   m_RootOrder: 0
@@ -245,6 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 
   description: 
+  quantity: 1
   grabbableTextGO: {fileID: 0}
   canBackpack: 0
   hasOutline: 0
@@ -262,8 +264,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.005, y: 0.01, z: 0.005}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.013598301, y: 0.01, z: 0.005}
+  m_Center: {x: -0.0042991526, y: 0, z: 7.620335e-19}
 --- !u!114 &1218096566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -747,7 +749,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 4.662633, y: 0.9119959, z: -8.001876}
+  m_ConnectedAnchor: {x: 0.59199905, y: 0.7119999, z: 0.44799805}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -962,7 +964,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 3.6548357, y: 0.9119959, z: -8.001876}
+  m_ConnectedAnchor: {x: -0.4157982, y: 0.7119999, z: 0.44799805}
   m_UseSpring: 1
   m_Spring:
     spring: 0
