@@ -64,6 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 
   description: 
+  quantity: 1
   grabbableTextGO: {fileID: 0}
   canBackpack: 0
   hasOutline: 0
@@ -102,7 +103,7 @@ MonoBehaviour:
   m_grabPoints: []
   objectRB: {fileID: 1261109557}
   handle: {fileID: 1721054946}
-  speed: 2
+  speed: 1
 --- !u!1 &1721054945
 GameObject:
   m_ObjectHideFlags: 0
