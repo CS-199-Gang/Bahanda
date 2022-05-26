@@ -17,7 +17,9 @@ public class HandScript : MonoBehaviour
     [SerializeField]
     private Transform pointEnd;
     [SerializeField]
-    private LayerMask teleportLayerMask;
+    private LayerMask teleportWhitelist;
+    [SerializeField]
+    private LayerMask teleportBlacklist;
     [SerializeField]
     private SkinnedMeshRenderer mesh;
     [SerializeField]
@@ -112,10 +114,12 @@ public class HandScript : MonoBehaviour
 
         vectors.Add(transform.position);
         for (int i = 0; i < killAfter; i++) {
-            if(Physics.Raycast(ray, out RaycastHit hit, 1f, teleportLayerMask)) {
+            if(Physics.Raycast(ray, out RaycastHit hit, 1f, teleportWhitelist)) {
                 teleportPos = hit.point;
                 vectors.Add(hit.point);
                 DrawTeleportLine(vectors);
+                return;
+            } else if (Physics.Raycast(ray, 1f, teleportBlacklist)) {
                 return;
             }
             ray = new Ray(ray.origin + ray.direction * lineDist, ray.direction + (Physics.gravity / 50));
