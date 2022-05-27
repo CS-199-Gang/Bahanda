@@ -4799,9 +4799,17 @@ MonoBehaviour:
   playerAnchor: {fileID: 1294918344959259103}
   pointStart: {fileID: 3821836113519372063}
   pointEnd: {fileID: 3821836112480296059}
-  teleportLayerMask:
+  teleportWhitelist:
     serializedVersion: 2
-    m_Bits: 257
+    m_Bits: 512
+  teleportBlacklist:
+    serializedVersion: 2
+    m_Bits: 256
+  mesh: {fileID: 0}
+  dryMat: {fileID: 0}
+  wetMat: {fileID: 0}
+  electricity: {fileID: 0}
+  wetParticles: {fileID: 0}
 --- !u!1 &3822932514063574097
 GameObject:
   m_ObjectHideFlags: 0
@@ -4910,9 +4918,17 @@ MonoBehaviour:
   playerAnchor: {fileID: 0}
   pointStart: {fileID: 0}
   pointEnd: {fileID: 0}
-  teleportLayerMask:
+  teleportWhitelist:
     serializedVersion: 2
     m_Bits: 0
+  teleportBlacklist:
+    serializedVersion: 2
+    m_Bits: 0
+  mesh: {fileID: 0}
+  dryMat: {fileID: 0}
+  wetMat: {fileID: 0}
+  electricity: {fileID: 0}
+  wetParticles: {fileID: 0}
 --- !u!1 &5087128667740512054
 GameObject:
   m_ObjectHideFlags: 0

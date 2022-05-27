@@ -33,11 +33,11 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // private void Update() {
-    //     if (OVRInput.GetDown(OVRInput.Button.Four) || Input.GetKeyDown(KeyCode.S)) {
-    //         NextScene();
-    //     }
-    // }
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.S)) {
+            NextScene();
+        }
+    }
 
     public void NextScene() {
         string sceneName = SceneManager.GetActiveScene().name;
