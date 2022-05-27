@@ -81,7 +81,7 @@ public class HandScript : MonoBehaviour
                 toDestroy = null;
             }
         } else if (ovrg.grabbedObject == null && currGrabbed != null) {
-            if(touchingBackpack) {
+            if(touchingBackpack && currGrabbed.GetComponent<ConstrainedGrabbable>() == null) {
                 toDestroy = currGrabbed.gameObject;
             }
             currGrabbed.OnRelease(touchingBackpack);
@@ -120,13 +120,13 @@ public class HandScript : MonoBehaviour
                 DrawTeleportLine(vectors);
                 return;
             } else if (Physics.Raycast(ray, 1f, teleportBlacklist)) {
+                ClearTeleportLine();
                 return;
             }
             ray = new Ray(ray.origin + ray.direction * lineDist, ray.direction + (Physics.gravity / 50));
             vectors.Add(ray.origin);
         }
         ClearTeleportLine();
-        return;
     }
     
     void ClearTeleportLine() {
